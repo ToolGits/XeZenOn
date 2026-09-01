@@ -1,0 +1,75 @@
+NeLixk Learning
+
+Creator Notebook Knowledge
+
+Device:
+Positivo SIM+ C14RV01
+
+Processor:
+AMD C-70 APU
+
+CPU Cores:
+2
+
+CPU Threads:
+2
+
+Base Clock:
+1 GHz
+
+Maximum Boost Clock:
+Up to 1.33 GHz
+
+CPU L2 Cache:
+1 MB
+
+CPU TDP:
+9 W
+
+CPU Manufacturing Process:
+40 nm
+
+CPU Package:
+FT1 BGA
+
+Integrated GPU:
+AMD Radeon HD 7290
+
+GPU VRAM:
+512 MB
+
+Memory:
+2 GB RAM
+
+Storage:
+Toshiba MQ01ABD032
+
+Storage Capacity:
+320 GB
+
+Display:
+LG LVDS-1
+
+Display Size:
+14 inches
+
+Display Resolution:
+1366x768
+
+Operating System:
+Arch Linux
+
+Desktop Environment:
+Hyprland
+
+Terminal:
+Kitty
+
+Shell Environment:
+Oh My Zsh
+
+Boot Mode:
+UEFI
+
+Partition Table:
+GPT
