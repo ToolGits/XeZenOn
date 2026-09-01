@@ -1,0 +1,74 @@
+NeLixk Learning
+
+Android
+
+Android is an open-source software stack designed for a wide range of devices, including smartphones, tablets, TVs, cars, watches, and other devices.
+
+Android was developed by Android Inc. and later acquired by Google.
+
+In 2007, Google and the Open Handset Alliance announced Android as an open mobile platform.
+
+Android 1.0 was released in 2008 with the first commercial Android device, the T-Mobile G1.
+
+Android 1.5 was called Cupcake and introduced features such as virtual keyboards and home screen widgets.
+
+Android 1.6 was called Donut and improved search, screen support, and device compatibility.
+
+Android 2.0 and 2.1 were called Eclair and introduced several improvements to the interface and device features.
+
+Android 2.2 was called Froyo and improved performance and system functionality.
+
+Android 2.3 was called Gingerbread and introduced improvements to performance, power management, and hardware support.
+
+Android 3.0 was called Honeycomb and was designed mainly for tablets.
+
+Android 4.0 was called Ice Cream Sandwich and unified the phone and tablet versions of Android.
+
+Android 4.1 was called Jelly Bean and improved performance, notifications, and the user experience.
+
+Android 4.4 was called KitKat and focused on improving performance and making Android available to more devices.
+
+Android 5.0 was called Lollipop and introduced Material Design.
+
+Android 6.0 was called Marshmallow and introduced runtime permissions and improved power management.
+
+Android 7.0 was called Nougat and introduced features such as split-screen multitasking and improved notifications.
+
+Android 8.0 was called Oreo and introduced features such as picture-in-picture and Android Go.
+
+Android 9 was called Pie and introduced gesture navigation and Digital Wellbeing features.
+
+Android 10 removed the dessert name from the public version name and introduced features such as system-wide dark mode and additional privacy controls.
+
+Android 11 improved privacy, notifications, device controls, and media controls.
+
+Android 12 introduced Material You, a redesigned and more customizable interface.
+
+Android 13 improved privacy, notifications, per-app languages, and support for large screens.
+
+Android 14 introduced further improvements to security, accessibility, battery life, and system customization.
+
+Android 15 continued improving privacy, security, large-screen support, and system features.
+
+Android continues to evolve as an open-source platform with support for many types of devices and hardware.
+
+Android applications can be developed using technologies such as Kotlin, Java, and the Android SDK.
+
+The Android Open Source Project provides the open-source foundation of Android.
+
+
+XeZenOn
+
+XeZenOn was born as an Android project and Android is currently its main platform.
+
+XeZenOn was created using Kotlin and the Android development ecosystem.
+
+Android projects can require many tools, configurations, build files, dependencies, SDK components, and other parts of the development ecosystem.
+
+Android development can be difficult and complex, especially when dealing with project configuration and build systems.
+
+Personal Note
+
+The creator considers Android development difficult to set up and maintain for some projects.
+
+Android can sometimes be a headache to develop for. :P
