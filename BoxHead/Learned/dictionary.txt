@@ -1,0 +1,120 @@
+NeLixk Learning
+
+Dictionary
+
+Portuguese
+Brazilian Portuguese and European Portuguese
+
+hello:
+olá
+
+hi:
+oi
+
+you:
+você / tu
+
+computer:
+computador
+
+friend:
+amigo
+
+thank you:
+obrigado / obrigada
+
+please:
+por favor
+
+English
+
+hello:
+hello
+
+hi:
+hi
+
+you:
+you
+
+computer:
+computer
+
+friend:
+friend
+
+thank you:
+thank you
+
+please:
+please
+
+Spanish
+Latin American Spanish and European Spanish
+
+hello:
+hola
+
+hi:
+hola
+
+you:
+tú / usted
+
+computer:
+computadora / ordenador
+
+friend:
+amigo
+
+thank you:
+gracias
+
+please:
+por favor
+
+German
+
+hello:
+hallo
+
+hi:
+hallo
+
+you:
+du / Sie
+
+computer:
+Computer
+
+friend:
+Freund
+
+thank you:
+danke
+
+please:
+bitte
+
+Bulgarian
+
+hello:
+здравей
+
+hi:
+здрасти
+
+you:
+ти / Вие
+
+computer:
+компютър
+
+friend:
+приятел
+
+thank you:
+благодаря
+
+please:
+моля
