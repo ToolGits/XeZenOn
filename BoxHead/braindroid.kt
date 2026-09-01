@@ -1,6 +1,10 @@
 package com.toolgits.xezenon.boxhead
 
-class Braindroid {
+import android.content.Context
+
+class Braindroid(
+    private val context: Context
+) {
 
     data class Thought(
         val input: String,
@@ -15,25 +19,32 @@ class Braindroid {
     fun think(input: String): String {
         if (!Rules.isValidInput(input)) {
             return Responses.generate(
-                Language.PORTUGUESE,
+                LanguageDetector.detectDeviceLanguage(context),
                 Intent.UNKNOWN
             )
         }
 
-        val normalizedInput = input.trim().lowercase()
+        val normalizedInput = normalize(input)
 
-        learnedResponses[normalizedInput]?.let { learned ->
-            return learned
+        learnedResponses[normalizedInput]?.let {
+            return it
         }
 
-        val language = LanguageDetector.detect(input)
-        val detectedIntent = IntentDetector.detect(input)
-        val intent = Rules.apply(detectedIntent)
+        val language =
+            LanguageDetector.detect(input)
+                ?: LanguageDetector.detectDeviceLanguage(context)
 
-        val response = Responses.generate(
-            language,
-            intent
-        )
+        val detectedIntent =
+            IntentDetector.detect(input)
+
+        val intent =
+            Rules.apply(detectedIntent)
+
+        val response =
+            Responses.generate(
+                language,
+                intent
+            )
 
         history.add(
             Thought(
@@ -51,7 +62,7 @@ class Braindroid {
         input: String,
         response: String
     ) {
-        val normalizedInput = input.trim().lowercase()
+        val normalizedInput = normalize(input)
         val normalizedResponse = response.trim()
 
         if (
@@ -61,18 +72,23 @@ class Braindroid {
             return
         }
 
-        learnedResponses[normalizedInput] = normalizedResponse
+        learnedResponses[normalizedInput] =
+            normalizedResponse
     }
 
-    fun hasLearned(input: String): Boolean {
+    fun hasLearned(
+        input: String
+    ): Boolean {
         return learnedResponses.containsKey(
-            input.trim().lowercase()
+            normalize(input)
         )
     }
 
-    fun forget(input: String) {
+    fun forget(
+        input: String
+    ) {
         learnedResponses.remove(
-            input.trim().lowercase()
+            normalize(input)
         )
     }
 
@@ -90,5 +106,14 @@ class Braindroid {
 
     fun clearLearnedKnowledge() {
         learnedResponses.clear()
+    }
+
+    private fun normalize(
+        input: String
+    ): String {
+        return input
+            .trim()
+            .lowercase()
+            .replace(Regex("\\s+"), " ")
     }
 }
