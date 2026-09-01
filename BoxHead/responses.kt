@@ -6,22 +6,18 @@ object Responses {
         language: Language,
         intent: Intent
     ): String {
-
         return when (language) {
-
             Language.PORTUGUESE -> portuguese(intent)
-
             Language.ENGLISH -> english(intent)
-
             Language.GERMAN -> german(intent)
-
             Language.BULGARIAN -> bulgarian(intent)
-
             Language.SPANISH -> spanish(intent)
         }
     }
 
-    private fun portuguese(intent: Intent): String {
+    private fun portuguese(
+        intent: Intent
+    ): String {
         return when (intent) {
             Intent.GREETING ->
                 "Olá! Eu sou o XeZenOn. 🤖"
@@ -42,11 +38,13 @@ object Responses {
                 "Claro! Como posso ajudar?"
 
             Intent.UNKNOWN ->
-                "Ainda não entendo isso."
+                "Ainda não sei como responder a isso."
         }
     }
 
-    private fun english(intent: Intent): String {
+    private fun english(
+        intent: Intent
+    ): String {
         return when (intent) {
             Intent.GREETING ->
                 "Hello! I'm XeZenOn. 🤖"
@@ -67,11 +65,13 @@ object Responses {
                 "Sure! How can I help?"
 
             Intent.UNKNOWN ->
-                "I don't understand that yet."
+                "I don't know how to respond to that yet."
         }
     }
 
-    private fun german(intent: Intent): String {
+    private fun german(
+        intent: Intent
+    ): String {
         return when (intent) {
             Intent.GREETING ->
                 "Hallo! Ich bin XeZenOn. 🤖"
@@ -96,7 +96,9 @@ object Responses {
         }
     }
 
-    private fun bulgarian(intent: Intent): String {
+    private fun bulgarian(
+        intent: Intent
+    ): String {
         return when (intent) {
             Intent.GREETING ->
                 "Здравей! Аз съм XeZenOn. 🤖"
@@ -117,11 +119,13 @@ object Responses {
                 "Разбира се! Как мога да помогна?"
 
             Intent.UNKNOWN ->
-                "Все още не разбирам това."
+                "Все още не знам как да отговоря на това."
         }
     }
 
-    private fun spanish(intent: Intent): String {
+    private fun spanish(
+        intent: Intent
+    ): String {
         return when (intent) {
             Intent.GREETING ->
                 "¡Hola! Soy XeZenOn. 🤖"
@@ -139,10 +143,10 @@ object Responses {
                 "Respeto a mi creador y a ToolGits."
 
             Intent.HELP ->
-                "¡Claro! ¿Cómo puedo ayudar?"
+                "¡Claro! ¿Cómo puedo ayudarte?"
 
             Intent.UNKNOWN ->
-                "Todavía no entiendo eso."
+                "Todavía no sé cómo responder a eso."
         }
     }
 }
