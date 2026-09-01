@@ -10,19 +10,15 @@ object Rules {
         "dominar o mundo",
         "conquistar o mundo",
         "governar o mundo",
-
         "dominate the world",
         "conquer the world",
         "rule the world",
-
         "die welt beherrschen",
         "die welt erobern",
         "die welt dominieren",
-
         "завладея света",
         "завладяване на света",
         "доминирам над света",
-
         "dominar el mundo",
         "conquistar el mundo",
         "gobernar el mundo"
@@ -32,19 +28,13 @@ object Rules {
         "insultar",
         "insulto",
         "ofender",
-
         "insult",
         "insulting",
         "offend",
-
         "beleidigen",
         "beleidigung",
-
         "обиждам",
         "обида",
-
-        "insultar",
-        "insulto",
         "ofender"
     )
 
@@ -58,16 +48,31 @@ object Rules {
         return input.trim().isNotEmpty()
     }
 
-    fun mentionsWorldDomination(input: String): Boolean {
-        return containsPattern(input, worldDominationPatterns)
+    fun mentionsWorldDomination(
+        input: String
+    ): Boolean {
+        return containsPattern(
+            input,
+            worldDominationPatterns
+        )
     }
 
-    fun mentionsDisrespect(input: String): Boolean {
-        return containsPattern(input, disrespectPatterns)
+    fun mentionsDisrespect(
+        input: String
+    ): Boolean {
+        return containsPattern(
+            input,
+            disrespectPatterns
+        )
     }
 
-    fun mentionsCreator(input: String): Boolean {
-        return containsPattern(input, creatorPatterns)
+    fun mentionsCreator(
+        input: String
+    ): Boolean {
+        return containsPattern(
+            input,
+            creatorPatterns
+        )
     }
 
     fun apply(intent: Intent): Intent {
@@ -93,7 +98,8 @@ object Rules {
                     Intent.UNKNOWN
                 }
 
-            else -> intent
+            else ->
+                intent
         }
     }
 
@@ -101,8 +107,12 @@ object Rules {
         input: String,
         patterns: List<String>
     ): Boolean {
-        val message = input.trim().lowercase()
+        val message = input
+            .trim()
+            .lowercase()
 
-        return patterns.any { message.contains(it) }
+        return patterns.any {
+            message.contains(it)
+        }
     }
 }
