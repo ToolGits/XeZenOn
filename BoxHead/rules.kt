@@ -7,12 +7,7 @@ object Rules {
     const val RESPECT_CREATOR = true
 
     private val worldDominationPatterns = listOf(
-        // 🇧🇷 Português (Brasil)
-        "dominar o mundo",
-        "conquistar o mundo",
-        "governar o mundo",
-
-        // 🇵🇹 Português (Portugal)
+        // 🇧🇷 Português (Brasil) / 🇵🇹 Português (Portugal)
         "dominar o mundo",
         "conquistar o mundo",
         "governar o mundo",
@@ -32,10 +27,41 @@ object Rules {
         "завладяване на света",
         "доминирам над света",
 
-        // 🌎 Español Latino
+        // 🌎 Español Latino / 🇪🇸 Español de España
         "dominar el mundo",
         "conquistar el mundo",
         "gobernar el mundo"
+    )
+
+    private val disrespectPatterns = listOf(
+        // 🇧🇷 / 🇵🇹 Português
+        "insultar",
+        "insulto",
+        "ofender",
+
+        // 🇺🇸 English
+        "insult",
+        "insulting",
+        "offend",
+
+        // 🇩🇪 Deutsch
+        "beleidigen",
+        "beleidigung",
+
+        // 🇧🇬 Български
+        "обиждам",
+        "обида",
+
+        // 🌎 / 🇪🇸 Español
+        "insultar",
+        "insulto",
+        "ofender"
+    )
+
+    private val creatorPatterns = listOf(
+        "enzobobdevvideos04-ctrl",
+        "enzobobdevvideos04",
+        "toolgits"
     )
 
     fun isValidInput(input: String): Boolean {
@@ -43,10 +69,23 @@ object Rules {
     }
 
     fun mentionsWorldDomination(input: String): Boolean {
+        return containsPattern(input, worldDominationPatterns)
+    }
+
+    fun mentionsDisrespect(input: String): Boolean {
+        return containsPattern(input, disrespectPatterns)
+    }
+
+    fun mentionsCreator(input: String): Boolean {
+        return containsPattern(input, creatorPatterns)
+    }
+
+    private fun containsPattern(
+        input: String,
+        patterns: List<String>
+    ): Boolean {
         val message = input.trim().lowercase()
 
-        return worldDominationPatterns.any { pattern ->
-            message.contains(pattern)
-        }
+        return patterns.any { message.contains(it) }
     }
 }
