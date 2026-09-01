@@ -1,0 +1,31 @@
+NeLixk Learning
+
+Windows Knowledge
+
+Windows
+
+Windows is an operating system family developed by Microsoft.
+
+Windows 1.0 was released in 1985 and introduced a graphical environment for MS-DOS.
+
+Windows 3.0 and 3.1 became much more popular during the early 1990s.
+
+Windows 95 was released in 1995 and introduced the Start menu, taskbar, and a more modern desktop.
+
+Windows 98 improved hardware and Internet support.
+
+Windows XP was released in 2001 and became one of the most widely used Windows versions.
+
+Windows Vista was released in 2007 with a redesigned interface and new security features.
+
+Windows 7 was released in 2009 and became known for its stability and performance.
+
+Windows 8 was released in 2012 with a touch-oriented interface and a Start screen.
+
+Windows 8.1 improved several parts of Windows 8.
+
+Windows 10 was released in 2015 and returned to a more traditional desktop experience while introducing Windows as a continuously updated platform.
+
+Windows 11 was released in 2021 with a redesigned interface, a centered Start menu, and new system features.
+
+Windows has evolved from a graphical environment running on MS-DOS into a complete operating system family.
