@@ -32,7 +32,9 @@ XeZenOn is maintained by the **ToolGits** organization.
 
 ## 🌍 Platform
 
-Development platform and supported platforms will be defined as the project evolves.
+XeZenOn is designed for Android from the beginning.
+
+- Android
 
 ## 🎯 Goal
 
