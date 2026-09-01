@@ -1,5 +1,8 @@
 package com.toolgits.xezenon.boxhead
 
+import android.content.Context
+import java.util.Locale
+
 enum class Language {
     PORTUGUESE,
     ENGLISH,
@@ -10,48 +13,183 @@ enum class Language {
 
 object LanguageDetector {
 
-    fun detect(input: String): Language {
-        val message = input.trim().lowercase()
+    private val portuguesePatterns = listOf(
+        "olá",
+        "ola",
+        "oi",
+        "você",
+        "voce",
+        "não",
+        "nao",
+        "quem é",
+        "quem e",
+        "como está",
+        "como esta",
+        "eu sou",
+        "eu quero",
+        "preciso de",
+        "pode me",
+        "o que"
+    )
 
-        return when {
-            containsAny(
+    private val englishPatterns = listOf(
+        "hello",
+        "hi",
+        "hey",
+        "who are you",
+        "how are you",
+        "i am",
+        "i want",
+        "i need",
+        "can you",
+        "what is",
+        "what are"
+    )
+
+    private val germanPatterns = listOf(
+        "hallo",
+        "guten morgen",
+        "guten tag",
+        "wer bist du",
+        "wie geht es",
+        "ich bin",
+        "ich möchte",
+        "ich mochte",
+        "ich brauche",
+        "kannst du",
+        "was ist"
+    )
+
+    private val bulgarianPatterns = listOf(
+        "здравей",
+        "добро утро",
+        "добър ден",
+        "кой си ти",
+        "как си",
+        "аз съм",
+        "искам",
+        "имам нужда",
+        "можеш ли",
+        "какво е"
+    )
+
+    private val spanishPatterns = listOf(
+        "hola",
+        "buenos días",
+        "buenos dias",
+        "buenas tardes",
+        "quién eres",
+        "quien eres",
+        "cómo estás",
+        "como estas",
+        "yo soy",
+        "quiero",
+        "necesito",
+        "puedes",
+        "qué es",
+        "que es"
+    )
+
+    fun detect(input: String): Language? {
+        val message = normalize(input)
+
+        if (message.isEmpty()) {
+            return null
+        }
+
+        val scores = mapOf(
+            Language.PORTUGUESE to score(
                 message,
-                "olá", "ola", "oi", "você", "voce",
-                "não", "nao", "mundo", "quem"
-            ) -> Language.PORTUGUESE
-
-            containsAny(
+                portuguesePatterns
+            ),
+            Language.ENGLISH to score(
                 message,
-                "hello", "hi", "hey", "you",
-                "world", "what", "who", "how"
-            ) -> Language.ENGLISH
-
-            containsAny(
+                englishPatterns
+            ),
+            Language.GERMAN to score(
                 message,
-                "hallo", "ich", "du", "welt",
-                "wer", "was", "wie"
-            ) -> Language.GERMAN
-
-            containsAny(
+                germanPatterns
+            ),
+            Language.BULGARIAN to score(
                 message,
-                "здравей", "свят", "кой", "как",
-                "аз", "ти"
-            ) -> Language.BULGARIAN
-
-            containsAny(
+                bulgarianPatterns
+            ),
+            Language.SPANISH to score(
                 message,
-                "hola", "mundo", "quién", "quien",
-                "qué", "que", "cómo", "como"
-            ) -> Language.SPANISH
+                spanishPatterns
+            )
+        )
 
-            else -> Language.PORTUGUESE
+        val best = scores.maxByOrNull { it.value }
+
+        return if (best != null && best.value > 0) {
+            best.key
+        } else {
+            null
         }
     }
 
-    private fun containsAny(
+    fun detectDeviceLanguage(
+        context: Context
+    ): Language {
+        val locales = context.resources.configuration.locales
+
+        for (index in 0 until locales.size()) {
+            val locale = locales[index]
+            val language = fromLocale(locale)
+
+            if (language != null) {
+                return language
+            }
+        }
+
+        return Language.ENGLISH
+    }
+
+    fun availableLanguages(): Set<Language> {
+        return Language.entries.toSet()
+    }
+
+    private fun fromLocale(
+        locale: Locale
+    ): Language? {
+        return when (locale.language.lowercase()) {
+            "pt" -> Language.PORTUGUESE
+            "en" -> Language.ENGLISH
+            "de" -> Language.GERMAN
+            "bg" -> Language.BULGARIAN
+            "es" -> Language.SPANISH
+            else -> null
+        }
+    }
+
+    private fun score(
         message: String,
-        vararg patterns: String
+        patterns: List<String>
+    ): Int {
+        return patterns.count {
+            containsPhrase(message, it)
+        }
+    }
+
+    private fun containsPhrase(
+        message: String,
+        phrase: String
     ): Boolean {
-        return patterns.any { message.contains(it) }
+        return message.contains(
+            " $phrase "
+        ) ||
+        message.startsWith("$phrase ") ||
+        message.endsWith(" $phrase") ||
+        message == phrase
+    }
+
+    private fun normalize(
+        input: String
+    ): String {
+        return input
+            .trim()
+            .lowercase()
+            .replace(Regex("\\s+"), " ")
     }
 }
