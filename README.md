@@ -17,6 +17,15 @@ XeZenOn is built around:
 - 🤝 Respectful interaction
 - 🛠️ Practical experimentation
 
+## 🔧 Development
+
+XeZenOn is developed for Android using Kotlin.
+
+- Language: Kotlin
+- Compiler: Kotlin K2
+- Build system: Gradle
+- Android build plugin: Android Gradle Plugin (AGP)
+
 ## 🧪 Current Stage
 
 XeZenOn is currently in its early development stage.
