@@ -6,14 +6,11 @@ android {
     namespace = "com.toolgits.xezenon"
     compileSdk = 36
 
-    sourceSets {
-        getByName("main") {
-            java.srcDirs(
-                "src/main/java",
-                "../../BoxHead"
-            )
-        }
+sourceSets {
+    getByName("main") {
+        kotlin.directories.add("../../BoxHead")
     }
+}
 
     defaultConfig {
         applicationId = "com.toolgits.xezenon"
