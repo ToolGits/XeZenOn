@@ -1,0 +1,8 @@
+com.toolgits.xezenon.app-pngs-0 /home/toollibs/XeZenOn/app/build/generated/res/pngs/debug
+com.toolgits.xezenon.app-updated_navigation_xml-1 /home/toollibs/XeZenOn/app/build/generated/updated_navigation_xml/debug
+com.toolgits.xezenon.app-packageDebugResources-2 /home/toollibs/XeZenOn/app/build/intermediates/incremental/debug/packageDebugResources/merged.dir
+com.toolgits.xezenon.app-packageDebugResources-3 /home/toollibs/XeZenOn/app/build/intermediates/incremental/debug/packageDebugResources/stripped.dir
+com.toolgits.xezenon.app-debug-4 /home/toollibs/XeZenOn/app/build/intermediates/merged_res/debug/mergeDebugResources
+com.toolgits.xezenon.app-debug-5 /home/toollibs/XeZenOn/app/src/debug/res
+com.toolgits.xezenon.app-main-6 /home/toollibs/XeZenOn/app/src/main/res
+gradleHome-0 /home/toollibs/.gradle
