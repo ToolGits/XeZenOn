@@ -77,3 +77,9 @@ google-services.json
 # ---------- POP generated artifact placeholders ----------
 # Keep .gitkeep files in real project directories,
 # but artifact directories above are ignored entirely.
+
+# Ignore .gitkeep files by default
+*.gitkeep
+
+# Keep the .gitkeep used by Android resources
+!app/src/main/res/.gitkeep
