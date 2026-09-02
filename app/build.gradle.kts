@@ -8,7 +8,7 @@ android {
 
 sourceSets {
     getByName("main") {
-        kotlin.directories.add("../../BoxHead")
+        kotlin.directories.add("../BoxHead")
     }
 }
 
