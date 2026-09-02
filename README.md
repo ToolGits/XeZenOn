@@ -1,54 +1,123 @@
-# XeZenOn
+# XeZenOn 🤖
 
-A lightweight semi-AI focused on simple, modular, and gradually evolving intelligent systems.
+[![Status](https://img.shields.io/badge/status-Stable-brightgreen)](https://github.com/ToolGits/XeZenOn)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/ToolGits/XeZenOn)
+[![Platform](https://img.shields.io/badge/platform-Android-green)](https://www.android.com/)
+[![Language](https://img.shields.io/badge/language-Kotlin-purple)](https://kotlinlang.org/)
+[![License](https://img.shields.io/badge/license-MPL--2.0-orange)](LICENSE)
+
+> A lightweight semi-AI focused on simple, modular, and gradually evolving intelligent systems.
+
+> [!IMPORTANT]
+> **XeZenOn 1.0.0 is Stable!** 🎉
 
 ## 🚀 About
 
-XeZenOn is a ToolGits project focused on exploring the development of a simple semi-AI.
+**XeZenOn** is a **ToolGits** project exploring the development of a lightweight semi-AI for Android.
 
-The project starts small, focusing on basic intelligent behavior and gradually evolving as new capabilities are developed.
+Its intelligence is built around rules, intents, language detection, responses, and a local knowledge system.
 
-## 🧠 Core Principles
+## 🧠 BoxHead
 
-XeZenOn is built around:
+**BoxHead** is the core of XeZenOn.
 
-- 🧩 Simple and modular development
-- 📚 Gradual evolution
-- 🤝 Respectful interaction
-- 🛠️ Practical experimentation
+- `Braindroid.kt` — Main brain
+- `Rules.kt` — Behavioral rules
+- `Language.kt` — Language detection
+- `Intent.kt` — Intent detection
+- `Responses.kt` — Response generation
+- `Learned/` — Local knowledge base
+
+## 🌍 Languages
+
+XeZenOn currently supports:
+
+- 🇧🇷 Portuguese
+- 🇺🇸 English
+- 🇩🇪 German
+- 🇧🇬 Bulgarian
+- 🇪🇸 Spanish
+
+> [!TIP]
+> XeZenOn can use the Android device language as a fallback.
+
+## ✨ Features
+
+- 🧠 Lightweight semi-AI
+- 🧩 Modular architecture
+- 🌍 Multilingual interaction
+- 🎯 Intent detection
+- 📚 Local knowledge
+- 📜 Rule-based behavior
+- 📱 Android native application
 
 ## 🔧 Development
 
-XeZenOn is developed for Android using Kotlin.
+| Component | Technology |
+|---|---|
+| Platform | Android |
+| Language | Kotlin |
+| Compiler | Kotlin K2 |
+| Build | Gradle |
+| AGP | Android Gradle Plugin |
+| Compile SDK | API 36 |
+| Minimum SDK | API 23 |
 
-- Language: Kotlin
-- Compiler: Kotlin K2
-- Build system: Gradle
-- Android build plugin: Android Gradle Plugin (AGP)
+### Build
 
-## 🧪 Current Stage
+```bash
+git clone https://github.com/ToolGits/XeZenOn.git
+cd XeZenOn
+./gradlew assembleDebug
+```
 
-XeZenOn is currently in its early development stage.
+APK output:
 
-The initial goal is to build a simple prototype and establish the foundation for future development.
+```text
+app/build/outputs/apk/debug/app-debug.apk
+```
 
-## 🏢 Official Maintainer
+## 🧪 Stable
 
-XeZenOn is maintained by the **ToolGits** organization.
+**XeZenOn 1.0.0** is the first stable release.
 
-- ToolGits: https://github.com/ToolGits
-- Created by: https://github.com/enzobobdevvideos04-ctrl
+The core system was successfully tested on real Android hardware, including:
 
-## 🌍 Platform
+- ✅ Application startup
+- ✅ Brain processing
+- ✅ Language detection
+- ✅ Intent detection
+- ✅ Knowledge lookup
+- ✅ Response generation
+- ✅ Multilingual responses
 
-XeZenOn is designed for Android from the beginning.
+> [!NOTE]
+> Stable does not mean development has stopped. Future versions can continue improving the brain, knowledge system, and user interface.
 
-- Android
+## 🛣️ Future
 
-## 🎯 Goal
+- 🎨 Improved UI
+- 🧠 More advanced reasoning
+- 📚 Expanded knowledge
+- 🌍 More languages
+- 🎯 More intents
+- ⚙️ Improved Android integration
 
-The goal of XeZenOn is to explore how a lightweight and modular semi-AI can gradually evolve while remaining simple and understandable.
+## 🏢 ToolGits
+
+XeZenOn is maintained by **ToolGits**.
+
+- Organization: https://github.com/ToolGits
+- Creator: https://github.com/enzobobdevvideos04-ctrl
 
 ## 📜 License
 
 XeZenOn is licensed under the **Mozilla Public License 2.0 (MPL-2.0)**.
+
+See [`LICENSE`](LICENSE) for the full license.
+
+---
+
+<p align="center">
+  <strong>XeZenOn — Small brain. Big evolution. 🤖</strong>
+</p>
