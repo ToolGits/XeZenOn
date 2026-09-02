@@ -1,0 +1,79 @@
+# =========================================
+# XeZenOn - Git Ignore
+# =========================================
+
+# ---------- Gradle ----------
+.gradle/
+**/.gradle/
+
+# ---------- Build outputs ----------
+build/
+**/build/
+
+# ---------- Android build ----------
+app/build/
+.externalNativeBuild/
+**/.externalNativeBuild/
+.cxx/
+**/.cxx/
+
+# ---------- Local Android configuration ----------
+local.properties
+
+# ---------- Android generated files ----------
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# ---------- Kotlin / Java generated files ----------
+*.class
+out/
+
+# ---------- Android Studio / IntelliJ ----------
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# ---------- Kotlin / compiler ----------
+.kotlin/
+**/.kotlin/
+
+# ---------- Generated / temporary ----------
+generated/
+**/generated/
+tmp/
+**/tmp/
+
+# ---------- Native / CMake ----------
+.cmake/
+**/.cmake/
+
+# ---------- Logs ----------
+*.log
+
+# ---------- OS files ----------
+.DS_Store
+Thumbs.db
+
+# ---------- Backup / temporary files ----------
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# ---------- Keystores / signing ----------
+*.jks
+*.keystore
+
+# ---------- Android Studio captures ----------
+captures/
+
+# ---------- Firebase / Google local config ----------
+google-services.json
+
+# ---------- POP generated artifact placeholders ----------
+# Keep .gitkeep files in real project directories,
+# but artifact directories above are ignored entirely.
