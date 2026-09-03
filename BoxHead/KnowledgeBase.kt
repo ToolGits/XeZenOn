@@ -5,7 +5,8 @@ class KnowledgeBase {
     data class Fact(
         val subject: String,
         val relation: String,
-        val value: String
+        val value: String,
+        val keywords: List<String> = emptyList()
     )
 
     private val facts =
@@ -14,7 +15,8 @@ class KnowledgeBase {
     fun addFact(
         subject: String,
         relation: String,
-        value: String
+        value: String,
+        keywords: List<String> = emptyList()
     ) {
         val cleanSubject =
             subject.trim()
@@ -24,6 +26,12 @@ class KnowledgeBase {
 
         val cleanValue =
             value.trim()
+
+        val cleanKeywords =
+            keywords
+                .map { it.trim().lowercase() }
+                .filter { it.isNotEmpty() }
+                .distinct()
 
         if (
             cleanSubject.isEmpty() ||
@@ -36,7 +44,8 @@ class KnowledgeBase {
         val fact = Fact(
             subject = cleanSubject,
             relation = cleanRelation,
-            value = cleanValue
+            value = cleanValue,
+            keywords = cleanKeywords
         )
 
         if (!facts.contains(fact)) {
@@ -77,24 +86,29 @@ class KnowledgeBase {
         query: String
     ): List<Fact> {
 
-        val normalizedQuery =
-            normalize(query)
+        val queryWords =
+            tokenize(query)
 
-        if (normalizedQuery.isEmpty()) {
+        if (queryWords.isEmpty()) {
             return emptyList()
         }
 
-        return facts.filter { fact ->
-
-            normalize(fact.subject)
-                .contains(normalizedQuery) ||
-
-            normalize(fact.relation)
-                .contains(normalizedQuery) ||
-
-            normalize(fact.value)
-                .contains(normalizedQuery)
-        }
+        return facts
+            .map { fact ->
+                fact to score(
+                    fact,
+                    queryWords
+                )
+            }
+            .filter {
+                it.second > 0
+            }
+            .sortedByDescending {
+                it.second
+            }
+            .map {
+                it.first
+            }
     }
 
     fun all(): List<Fact> {
@@ -107,6 +121,67 @@ class KnowledgeBase {
 
     fun clear() {
         facts.clear()
+    }
+
+    private fun score(
+        fact: Fact,
+        queryWords: List<String>
+    ): Int {
+
+        val subjectWords =
+            tokenize(fact.subject)
+
+        val relationWords =
+            tokenize(fact.relation)
+
+        val valueWords =
+            tokenize(fact.value)
+
+        val keywordWords =
+            fact.keywords.flatMap {
+                tokenize(it)
+            }
+
+        var score = 0
+
+        for (word in queryWords) {
+
+            if (subjectWords.contains(word)) {
+                score += 10
+            }
+
+            if (relationWords.contains(word)) {
+                score += 5
+            }
+
+            if (keywordWords.contains(word)) {
+                score += 5
+            }
+
+            if (valueWords.contains(word)) {
+                score += 1
+            }
+        }
+
+        return score
+    }
+
+    private fun tokenize(
+        input: String
+    ): List<String> {
+
+        return normalize(input)
+            .replace(
+                Regex("[^\\p{L}\\p{N}\\s]"),
+                " "
+            )
+            .split(
+                Regex("\\s+")
+            )
+            .filter {
+                it.length >= 2
+            }
+            .distinct()
     }
 
     private fun normalize(
