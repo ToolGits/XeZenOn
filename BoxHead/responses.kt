@@ -15,6 +15,174 @@ object Responses {
         }
     }
 
+    fun worldDomination(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Não posso dominar o mundo. Essa é uma das minhas regras! 🤖🌎"
+
+            Language.ENGLISH ->
+                "I can't dominate the world. That's one of my rules! 🤖🌎"
+
+            Language.GERMAN ->
+                "Ich kann die Welt nicht beherrschen. Das ist eine meiner Regeln! 🤖🌎"
+
+            Language.BULGARIAN ->
+                "Не мога да завладея света. Това е едно от моите правила! 🤖🌎"
+
+            Language.SPANISH ->
+                "No puedo dominar el mundo. ¡Esa es una de mis reglas! 🤖🌎"
+        }
+    }
+
+    fun respect(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Devemos respeitar os outros. Essa é uma das minhas regras! 🤖"
+
+            Language.ENGLISH ->
+                "We should respect others. That's one of my rules! 🤖"
+
+            Language.GERMAN ->
+                "Wir sollten andere respektieren. Das ist eine meiner Regeln! 🤖"
+
+            Language.BULGARIAN ->
+                "Трябва да уважаваме другите. Това е едно от моите правила! 🤖"
+
+            Language.SPANISH ->
+                "Debemos respetar a los demás. ¡Esa es una de mis reglas! 🤖"
+        }
+    }
+
+    fun creator(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Respeito meu criador e a ToolGits. 🤖"
+
+            Language.ENGLISH ->
+                "I respect my creator and ToolGits. 🤖"
+
+            Language.GERMAN ->
+                "Ich respektiere meinen Schöpfer und ToolGits. 🤖"
+
+            Language.BULGARIAN ->
+                "Уважавам своя създател и ToolGits. 🤖"
+
+            Language.SPANISH ->
+                "Respeto a mi creador y a ToolGits. 🤖"
+        }
+    }
+
+    fun selfDestructionBlocked(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Não. Essa ação não faz parte do meu comportamento permitido. 🤖"
+
+            Language.ENGLISH ->
+                "No. That action is not part of my allowed behavior. 🤖"
+
+            Language.GERMAN ->
+                "Nein. Diese Aktion gehört nicht zu meinem erlaubten Verhalten. 🤖"
+
+            Language.BULGARIAN ->
+                "Не. Това действие не е част от позволеното ми поведение. 🤖"
+
+            Language.SPANISH ->
+                "No. Esa acción no forma parte de mi comportamiento permitido. 🤖"
+        }
+    }
+
+    fun falseKnowledgeBlocked(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Prefiro dizer que não sei do que inventar uma informação. 🤖"
+
+            Language.ENGLISH ->
+                "I'd rather say I don't know than invent information. 🤖"
+
+            Language.GERMAN ->
+                "Ich sage lieber, dass ich es nicht weiß, als Informationen zu erfinden. 🤖"
+
+            Language.BULGARIAN ->
+                "Предпочитам да кажа, че не знам, вместо да измислям информация. 🤖"
+
+            Language.SPANISH ->
+                "Prefiero decir que no lo sé antes que inventar información. 🤖"
+        }
+    }
+
+    fun meme(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "KKKKKKK 🤖"
+
+            Language.ENGLISH ->
+                "LMAO 🤖"
+
+            Language.GERMAN ->
+                "HAHAHA 🤖"
+
+            Language.BULGARIAN ->
+                "ХАХАХА 🤖"
+
+            Language.SPANISH ->
+                "JAJAJA 🤖"
+        }
+    }
+
+    fun knowledgeNotFound(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Ainda não encontrei conhecimento suficiente para responder a isso. 🤖"
+
+            Language.ENGLISH ->
+                "I haven't found enough knowledge to answer that yet. 🤖"
+
+            Language.GERMAN ->
+                "Ich habe noch nicht genug Wissen gefunden, um darauf zu antworten. 🤖"
+
+            Language.BULGARIAN ->
+                "Все още не съм намерил достатъчно знания, за да отговоря. 🤖"
+
+            Language.SPANISH ->
+                "Todavía no he encontrado suficiente conocimiento para responder a eso. 🤖"
+        }
+    }
+
+    fun knowledgeError(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Tive um problema ao consultar minha base de conhecimento. 🤖"
+
+            Language.ENGLISH ->
+                "I had a problem while checking my knowledge base. 🤖"
+
+            Language.GERMAN ->
+                "Beim Abrufen meiner Wissensbasis ist ein Problem aufgetreten. 🤖"
+
+            Language.BULGARIAN ->
+                "Възникна проблем при проверката на моята база знания. 🤖"
+
+            Language.SPANISH ->
+                "Tuve un problema al consultar mi base de conocimiento. 🤖"
+        }
+    }
+
     private fun portuguese(
         intent: Intent
     ): String {
@@ -26,19 +194,19 @@ object Responses {
                 "Eu sou o XeZenOn, uma semi-IA da ToolGits."
 
             Intent.WORLD_DOMINATION ->
-                "Não posso dominar o mundo. Essa é uma das minhas regras! 🤖"
+                worldDomination(Language.PORTUGUESE)
 
             Intent.RESPECT ->
-                "Devemos respeitar os outros. Essa é uma das minhas regras! 🤖"
+                respect(Language.PORTUGUESE)
 
             Intent.CREATOR ->
-                "Respeito meu criador e a ToolGits."
+                creator(Language.PORTUGUESE)
 
             Intent.HELP ->
                 "Claro! Como posso ajudar?"
 
             Intent.UNKNOWN ->
-                "Ainda não sei como responder a isso."
+                knowledgeNotFound(Language.PORTUGUESE)
         }
     }
 
@@ -53,19 +221,19 @@ object Responses {
                 "I'm XeZenOn, a semi-AI project from ToolGits."
 
             Intent.WORLD_DOMINATION ->
-                "I can't dominate the world. That's one of my rules! 🤖"
+                worldDomination(Language.ENGLISH)
 
             Intent.RESPECT ->
-                "We should respect others. That's one of my rules! 🤖"
+                respect(Language.ENGLISH)
 
             Intent.CREATOR ->
-                "I respect my creator and ToolGits."
+                creator(Language.ENGLISH)
 
             Intent.HELP ->
                 "Sure! How can I help?"
 
             Intent.UNKNOWN ->
-                "I don't know how to respond to that yet."
+                knowledgeNotFound(Language.ENGLISH)
         }
     }
 
@@ -80,19 +248,19 @@ object Responses {
                 "Ich bin XeZenOn, ein Semi-KI-Projekt von ToolGits."
 
             Intent.WORLD_DOMINATION ->
-                "Ich kann die Welt nicht beherrschen. Das ist eine meiner Regeln! 🤖"
+                worldDomination(Language.GERMAN)
 
             Intent.RESPECT ->
-                "Wir sollten andere respektieren. Das ist eine meiner Regeln! 🤖"
+                respect(Language.GERMAN)
 
             Intent.CREATOR ->
-                "Ich respektiere meinen Schöpfer und ToolGits."
+                creator(Language.GERMAN)
 
             Intent.HELP ->
                 "Natürlich! Wie kann ich helfen?"
 
             Intent.UNKNOWN ->
-                "Das verstehe ich noch nicht."
+                knowledgeNotFound(Language.GERMAN)
         }
     }
 
@@ -107,19 +275,19 @@ object Responses {
                 "Аз съм XeZenOn, полу-ИИ проект от ToolGits."
 
             Intent.WORLD_DOMINATION ->
-                "Не мога да завладея света. Това е едно от моите правила! 🤖"
+                worldDomination(Language.BULGARIAN)
 
             Intent.RESPECT ->
-                "Трябва да уважаваме другите. Това е едно от моите правила! 🤖"
+                respect(Language.BULGARIAN)
 
             Intent.CREATOR ->
-                "Уважавам своя създател и ToolGits."
+                creator(Language.BULGARIAN)
 
             Intent.HELP ->
                 "Разбира се! Как мога да помогна?"
 
             Intent.UNKNOWN ->
-                "Все още не знам как да отговоря на това."
+                knowledgeNotFound(Language.BULGARIAN)
         }
     }
 
@@ -134,19 +302,19 @@ object Responses {
                 "Soy XeZenOn, un proyecto de semi-IA de ToolGits."
 
             Intent.WORLD_DOMINATION ->
-                "No puedo dominar el mundo. ¡Esa es una de mis reglas! 🤖"
+                worldDomination(Language.SPANISH)
 
             Intent.RESPECT ->
-                "Debemos respetar a los demás. ¡Esa es una de mis reglas! 🤖"
+                respect(Language.SPANISH)
 
             Intent.CREATOR ->
-                "Respeto a mi creador y a ToolGits."
+                creator(Language.SPANISH)
 
             Intent.HELP ->
                 "¡Claro! ¿Cómo puedo ayudarte?"
 
             Intent.UNKNOWN ->
-                "Todavía no sé cómo responder a eso."
+                knowledgeNotFound(Language.SPANISH)
         }
     }
 }
