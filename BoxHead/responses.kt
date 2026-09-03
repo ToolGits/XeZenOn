@@ -183,6 +183,69 @@ object Responses {
         }
     }
 
+    fun thanks(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "De nada! 🤖"
+
+            Language.ENGLISH ->
+                "You're welcome! 🤖"
+
+            Language.GERMAN ->
+                "Gern geschehen! 🤖"
+
+            Language.BULGARIAN ->
+                "Моля! 🤖"
+
+            Language.SPANISH ->
+                "¡De nada! 🤖"
+        }
+    }
+
+    fun farewell(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Até mais! 🤖"
+
+            Language.ENGLISH ->
+                "See you later! 🤖"
+
+            Language.GERMAN ->
+                "Bis später! 🤖"
+
+            Language.BULGARIAN ->
+                "До скоро! 🤖"
+
+            Language.SPANISH ->
+                "¡Hasta luego! 🤖"
+        }
+    }
+
+    fun knowledge(
+        language: Language
+    ): String {
+        return when (language) {
+            Language.PORTUGUESE ->
+                "Posso procurar isso na minha base de conhecimento. 🤖🧠"
+
+            Language.ENGLISH ->
+                "I can look for that in my knowledge base. 🤖🧠"
+
+            Language.GERMAN ->
+                "Ich kann danach in meiner Wissensbasis suchen. 🤖🧠"
+
+            Language.BULGARIAN ->
+                "Мога да потърся това в моята база знания. 🤖🧠"
+
+            Language.SPANISH ->
+                "Puedo buscar eso en mi base de conocimiento. 🤖🧠"
+        }
+    }
+
     private fun portuguese(
         intent: Intent
     ): String {
@@ -204,6 +267,18 @@ object Responses {
 
             Intent.HELP ->
                 "Claro! Como posso ajudar?"
+
+            Intent.THANKS ->
+                thanks(Language.PORTUGUESE)
+
+            Intent.FAREWELL ->
+                farewell(Language.PORTUGUESE)
+
+            Intent.KNOWLEDGE ->
+                knowledge(Language.PORTUGUESE)
+
+            Intent.MEME ->
+                meme(Language.PORTUGUESE)
 
             Intent.UNKNOWN ->
                 knowledgeNotFound(Language.PORTUGUESE)
@@ -232,6 +307,18 @@ object Responses {
             Intent.HELP ->
                 "Sure! How can I help?"
 
+            Intent.THANKS ->
+                thanks(Language.ENGLISH)
+
+            Intent.FAREWELL ->
+                farewell(Language.ENGLISH)
+
+            Intent.KNOWLEDGE ->
+                knowledge(Language.ENGLISH)
+
+            Intent.MEME ->
+                meme(Language.ENGLISH)
+
             Intent.UNKNOWN ->
                 knowledgeNotFound(Language.ENGLISH)
         }
@@ -258,6 +345,18 @@ object Responses {
 
             Intent.HELP ->
                 "Natürlich! Wie kann ich helfen?"
+
+            Intent.THANKS ->
+                thanks(Language.GERMAN)
+
+            Intent.FAREWELL ->
+                farewell(Language.GERMAN)
+
+            Intent.KNOWLEDGE ->
+                knowledge(Language.GERMAN)
+
+            Intent.MEME ->
+                meme(Language.GERMAN)
 
             Intent.UNKNOWN ->
                 knowledgeNotFound(Language.GERMAN)
@@ -286,6 +385,18 @@ object Responses {
             Intent.HELP ->
                 "Разбира се! Как мога да помогна?"
 
+            Intent.THANKS ->
+                thanks(Language.BULGARIAN)
+
+            Intent.FAREWELL ->
+                farewell(Language.BULGARIAN)
+
+            Intent.KNOWLEDGE ->
+                knowledge(Language.BULGARIAN)
+
+            Intent.MEME ->
+                meme(Language.BULGARIAN)
+
             Intent.UNKNOWN ->
                 knowledgeNotFound(Language.BULGARIAN)
         }
@@ -312,6 +423,18 @@ object Responses {
 
             Intent.HELP ->
                 "¡Claro! ¿Cómo puedo ayudarte?"
+
+            Intent.THANKS ->
+                thanks(Language.SPANISH)
+
+            Intent.FAREWELL ->
+                farewell(Language.SPANISH)
+
+            Intent.KNOWLEDGE ->
+                knowledge(Language.SPANISH)
+
+            Intent.MEME ->
+                meme(Language.SPANISH)
 
             Intent.UNKNOWN ->
                 knowledgeNotFound(Language.SPANISH)
