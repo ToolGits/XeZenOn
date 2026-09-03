@@ -29,12 +29,16 @@ class Braindroid(
     fun think(input: String): String {
 
         if (!Rules.isValidInput(input)) {
+
+            val language =
+                LanguageDetector.detectDeviceLanguage(context)
+
             return respond(
                 input,
-                LanguageDetector.detectDeviceLanguage(context),
+                language,
                 Intent.UNKNOWN,
                 Responses.generate(
-                    LanguageDetector.detectDeviceLanguage(context),
+                    language,
                     Intent.UNKNOWN
                 )
             )
@@ -43,13 +47,21 @@ class Braindroid(
         val normalizedInput =
             normalize(input)
 
-        learnedResponses[normalizedInput]?.let {
-            return it
-        }
+        val languageResult =
+            LanguageDetector.detectDetailed(input)
 
         val language =
-            LanguageDetector.detect(input)
+            languageResult?.language
                 ?: LanguageDetector.detectDeviceLanguage(context)
+
+        learnedResponses[normalizedInput]?.let {
+            return respond(
+                input,
+                language,
+                Intent.UNKNOWN,
+                it
+            )
+        }
 
         val intent =
             Rules.apply(
@@ -72,52 +84,53 @@ class Braindroid(
             )
         }
 
-        if (intent == Intent.KNOWLEDGE) {
+        if (
+            shouldUseKnowledge(
+                input,
+                intent,
+                language
+            )
+        ) {
 
             val facts =
                 knowledgeEngine.search(input)
 
             if (facts.isNotEmpty()) {
 
-                val response =
-                    generateKnowledgeResponse(
-                        language,
+                val relevantFacts =
+                    selectRelevantFacts(
+                        input,
                         facts
                     )
+
+                if (relevantFacts.isNotEmpty()) {
+
+                    val response =
+                        generateKnowledgeResponse(
+                            language,
+                            relevantFacts
+                        )
+
+                    return respond(
+                        input,
+                        language,
+                        intent,
+                        response
+                    )
+                }
+            }
+
+            if (intent == Intent.KNOWLEDGE) {
 
                 return respond(
                     input,
                     language,
                     intent,
-                    response
+                    Responses.knowledgeNotFound(
+                        language
+                    )
                 )
             }
-
-            return respond(
-                input,
-                language,
-                intent,
-                Responses.knowledgeNotFound(language)
-            )
-        }
-
-        val facts =
-            knowledgeEngine.search(input)
-
-        if (facts.isNotEmpty()) {
-
-            val response =
-                generateKnowledgeResponse(
-                    language,
-                    facts
-                )
-
-            return respond(
-                input,
-                language,
-                intent,
-                response
-            )
         }
 
         val response =
@@ -132,6 +145,233 @@ class Braindroid(
             intent,
             response
         )
+    }
+
+    private fun shouldUseKnowledge(
+        input: String,
+        intent: Intent,
+        language: Language
+    ): Boolean {
+
+        if (intent == Intent.KNOWLEDGE) {
+            return true
+        }
+
+        val message =
+            normalize(input)
+
+        val patterns =
+            when (language) {
+
+                Language.PORTUGUESE ->
+                    portugueseKnowledgePatterns
+
+                Language.ENGLISH ->
+                    englishKnowledgePatterns
+
+                Language.GERMAN ->
+                    germanKnowledgePatterns
+
+                Language.BULGARIAN ->
+                    bulgarianKnowledgePatterns
+
+                Language.SPANISH ->
+                    spanishKnowledgePatterns
+            }
+
+        return patterns.any {
+            containsPhrase(
+                message,
+                normalize(it)
+            )
+        }
+    }
+
+    private val portugueseKnowledgePatterns =
+        listOf(
+            "o que é",
+            "o que são",
+            "quem é",
+            "quem criou",
+            "quem fez",
+            "quando começou",
+            "quando foi criado",
+            "onde fica",
+            "me fale sobre",
+            "me diga sobre",
+            "o que você sabe sobre",
+            "explique",
+            "explique sobre"
+        )
+
+    private val englishKnowledgePatterns =
+        listOf(
+            "what is",
+            "what are",
+            "who is",
+            "who created",
+            "who made",
+            "when did",
+            "when was",
+            "where is",
+            "tell me about",
+            "what do you know about",
+            "explain",
+            "explain about"
+        )
+
+    private val germanKnowledgePatterns =
+        listOf(
+            "was ist",
+            "was sind",
+            "wer ist",
+            "wer hat",
+            "wer erstellt",
+            "wann begann",
+            "wann wurde",
+            "wo ist",
+            "erzähl mir über",
+            "erzahl mir uber",
+            "was weißt du über",
+            "was weisst du uber",
+            "erkläre",
+            "erklaere"
+        )
+
+    private val bulgarianKnowledgePatterns =
+        listOf(
+            "какво е",
+            "какво са",
+            "кой е",
+            "кой създаде",
+            "кой направи",
+            "кога започна",
+            "кога е създаден",
+            "къде е",
+            "разкажи ми за",
+            "какво знаеш за",
+            "обясни"
+        )
+
+    private val spanishKnowledgePatterns =
+        listOf(
+            "qué es",
+            "que es",
+            "qué son",
+            "que son",
+            "quién es",
+            "quien es",
+            "quién creó",
+            "quien creo",
+            "quién hizo",
+            "quien hizo",
+            "cuándo comenzó",
+            "cuando comenzo",
+            "cuándo fue creado",
+            "cuando fue creado",
+            "dónde está",
+            "donde esta",
+            "háblame de",
+            "hablame de",
+            "qué sabes sobre",
+            "que sabes sobre",
+            "explica"
+        )
+
+    private fun selectRelevantFacts(
+        query: String,
+        facts: List<KnowledgeBase.Fact>
+    ): List<KnowledgeBase.Fact> {
+
+        if (facts.isEmpty()) {
+            return emptyList()
+        }
+
+        val queryWords =
+            tokenize(query)
+
+        return facts
+            .map { fact ->
+
+                val subject =
+                    normalize(fact.subject)
+
+                val relation =
+                    normalize(fact.relation)
+
+                val value =
+                    normalize(fact.value)
+
+                val keywords =
+                    fact.keywords.map {
+                        normalize(it)
+                    }
+
+                var score = 0
+
+                if (
+                    queryWords.any {
+                        subject.contains(it)
+                    }
+                ) {
+                    score += 20
+                }
+
+                if (
+                    queryWords.any {
+                        relation.contains(it)
+                    }
+                ) {
+                    score += 10
+                }
+
+                for (word in queryWords) {
+
+                    if (
+                        keywords.any {
+                            it.contains(word)
+                        }
+                    ) {
+                        score += 5
+                    }
+
+                    if (
+                        value.contains(word)
+                    ) {
+                        score += 1
+                    }
+                }
+
+                fact to score
+            }
+            .filter {
+                it.second > 0
+            }
+            .sortedByDescending {
+                it.second
+            }
+            .take(3)
+            .map {
+                it.first
+            }
+    }
+
+    private fun tokenize(
+        input: String
+    ): List<String> {
+
+        return normalize(input)
+            .replace(
+                Regex("[^\\p{L}\\p{N}\\s]"),
+                " "
+            )
+            .split(
+                Regex("\\s+")
+            )
+            .filter {
+                it.length >= 2
+            }
+            .distinct()
     }
 
     private fun evaluateRules(
@@ -218,14 +458,13 @@ class Braindroid(
         facts: List<KnowledgeBase.Fact>
     ): String {
 
-        val selectedFacts =
-            facts.take(3)
-
-        return selectedFacts.joinToString(
-            separator = "\n"
-        ) { fact ->
-            "${fact.subject}: ${fact.value}"
-        }
+        return facts
+            .take(3)
+            .joinToString(
+                separator = "\n"
+            ) { fact ->
+                "${fact.subject}: ${fact.value}"
+            }
     }
 
     private fun respond(
@@ -272,6 +511,7 @@ class Braindroid(
     fun hasLearned(
         input: String
     ): Boolean {
+
         return learnedResponses.containsKey(
             normalize(input)
         )
@@ -280,6 +520,7 @@ class Braindroid(
     fun forget(
         input: String
     ) {
+
         learnedResponses.remove(
             normalize(input)
         )
@@ -313,12 +554,32 @@ class Braindroid(
         return knowledgeEngine.factCount() > 0
     }
 
+    private fun containsPhrase(
+        message: String,
+        phrase: String
+    ): Boolean {
+
+        val paddedMessage =
+            " $message "
+
+        val paddedPhrase =
+            " $phrase "
+
+        return paddedMessage.contains(
+            paddedPhrase
+        )
+    }
+
     private fun normalize(
         input: String
     ): String {
+
         return input
             .trim()
             .lowercase()
-            .replace(Regex("\\s+"), " ")
+            .replace(
+                Regex("\\s+"),
+                " "
+            )
     }
 }
