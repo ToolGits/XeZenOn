@@ -1,0 +1,40 @@
+NeLixk Learning
+
+Linux
+
+Linux is a free and open-source kernel created by Linus Torvalds.
+
+Linux began in 1991 as a personal project by Linus Torvalds.
+
+The Linux kernel was designed to be compatible with Unix-like systems.
+
+Linux was released as free software and quickly became a collaborative project involving developers around the world.
+
+Linux is used in many types of devices and systems, including desktop computers, servers, embedded systems, smartphones, and supercomputers.
+
+Linux distributions combine the Linux kernel with other software to create complete operating systems.
+
+Examples of Linux distributions include Debian, Ubuntu, Fedora, Arch Linux, and many others.
+
+The Linux kernel is released under the GNU General Public License version 2.
+
+The GNU Project began in 1984 with the goal of developing a complete free Unix-like operating system.
+
+The combination of GNU software and the Linux kernel forms what is commonly called a GNU/Linux system.
+
+Linux development is community-driven and involves developers and companies from around the world.
+
+The Linux kernel continues to evolve through frequent releases and contributions from its development community.
+
+Linux is known for its flexibility, portability, stability, and openness.
+
+Linux can be used for desktop computing, software development, servers, embedded systems, and many other purposes.
+
+
+Creator
+
+The creator uses Arch Linux as the main desktop operating system.
+
+The creator uses Linux with the Hyprland desktop environment.
+
+Linux is an important part of the creator's computing environment.

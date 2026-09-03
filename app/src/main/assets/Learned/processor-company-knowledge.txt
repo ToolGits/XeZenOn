@@ -1,0 +1,27 @@
+NeLixk Learning
+
+Processor Company Knowledge
+
+Intel
+
+Intel is an American technology company known for designing and manufacturing processors and other semiconductor products.
+
+Intel develops CPUs for personal computers, servers, laptops, and other computing systems.
+
+Intel has produced processor families such as Pentium, Core, Xeon, and more recent Core Ultra processors.
+
+AMD
+
+AMD is an American semiconductor company known for designing CPUs, GPUs, and other computing products.
+
+AMD develops processors for personal computers, servers, and other computing systems.
+
+AMD has produced processor families such as Athlon, Ryzen, Threadripper, and EPYC.
+
+Intel and AMD
+
+Intel and AMD are two major companies in the x86 processor market.
+
+Both companies have developed processors for desktop computers, laptops, and servers.
+
+Processor performance depends on many factors, including architecture, clock speed, number of cores, cache, power efficiency, workload, and software optimization.
