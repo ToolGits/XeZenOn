@@ -16,7 +16,15 @@ class Braindroid(
     private val learnedResponses = mutableMapOf<String, String>()
     private val history = mutableListOf<Thought>()
 
+    private val knowledgeEngine =
+        KnowledgeEngine(context)
+
+    init {
+        knowledgeEngine.load()
+    }
+
     fun think(input: String): String {
+
         if (!Rules.isValidInput(input)) {
             return Responses.generate(
                 LanguageDetector.detectDeviceLanguage(context),
@@ -24,7 +32,8 @@ class Braindroid(
             )
         }
 
-        val normalizedInput = normalize(input)
+        val normalizedInput =
+            normalize(input)
 
         learnedResponses[normalizedInput]?.let {
             return it
@@ -39,6 +48,29 @@ class Braindroid(
 
         val intent =
             Rules.apply(detectedIntent)
+
+        val facts =
+            knowledgeEngine.search(input)
+
+        if (facts.isNotEmpty()) {
+
+            val response =
+                generateKnowledgeResponse(
+                    language,
+                    facts
+                )
+
+            history.add(
+                Thought(
+                    input = input,
+                    language = language,
+                    intent = intent,
+                    response = response
+                )
+            )
+
+            return response
+        }
 
         val response =
             Responses.generate(
@@ -58,12 +90,42 @@ class Braindroid(
         return response
     }
 
+    private fun generateKnowledgeResponse(
+        language: Language,
+        facts: List<KnowledgeBase.Fact>
+    ): String {
+
+        val fact =
+            facts.first()
+
+        return when (language) {
+
+            Language.PORTUGUESE ->
+                "${fact.subject}: ${fact.value}"
+
+            Language.ENGLISH ->
+                "${fact.subject}: ${fact.value}"
+
+            Language.GERMAN ->
+                "${fact.subject}: ${fact.value}"
+
+            Language.BULGARIAN ->
+                "${fact.subject}: ${fact.value}"
+
+            Language.SPANISH ->
+                "${fact.subject}: ${fact.value}"
+        }
+    }
+
     fun learn(
         input: String,
         response: String
     ) {
-        val normalizedInput = normalize(input)
-        val normalizedResponse = response.trim()
+        val normalizedInput =
+            normalize(input)
+
+        val normalizedResponse =
+            response.trim()
 
         if (
             normalizedInput.isEmpty() ||
@@ -94,6 +156,14 @@ class Braindroid(
 
     fun learnedCount(): Int {
         return learnedResponses.size
+    }
+
+    fun knowledgeCount(): Int {
+        return knowledgeEngine.factCount()
+    }
+
+    fun reloadKnowledge() {
+        knowledgeEngine.reload()
     }
 
     fun history(): List<Thought> {
