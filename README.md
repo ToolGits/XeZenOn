@@ -1,7 +1,7 @@
 # XeZenOn 🤖
 
 [![Status](https://img.shields.io/badge/status-Stable-brightgreen)](https://github.com/ToolGits/XeZenOn)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/ToolGits/XeZenOn)
+[![Version](https://img.shields.io/badge/version-1.1.1-blue)](https://github.com/ToolGits/XeZenOn)
 [![Platform](https://img.shields.io/badge/platform-Android-green)](https://www.android.com/)
 [![Language](https://img.shields.io/badge/language-Kotlin-purple)](https://kotlinlang.org/)
 [![License](https://img.shields.io/badge/license-MPL--2.0-orange)](LICENSE)
@@ -9,7 +9,7 @@
 > A lightweight semi-AI focused on simple, modular, and gradually evolving intelligent systems.
 
 > [!IMPORTANT]
-> **XeZenOn 1.0.0 is Stable!** 🎉
+> **XeZenOn 1.1.1 is Stable!** 🎉
 
 ## 🚀 About
 
@@ -21,12 +21,29 @@ Its intelligence is built around rules, intents, language detection, responses, 
 
 **BoxHead** is the core of XeZenOn.
 
-- `Braindroid.kt` — Main brain
-- `Rules.kt` — Behavioral rules
-- `Language.kt` — Language detection
-- `Intent.kt` — Intent detection
-- `Responses.kt` — Response generation
-- `Learned/` — Local knowledge base
+- `braindroid.kt` — Main brain
+- `rules.kt` — Behavioral rules
+- `language.kt` — Language detection
+- `intents.kt` — Intent detection
+- `responses.kt` — Response generation
+- `KnowledgeEngine.kt` — Knowledge loading and search
+- `KnowledgeBase.kt` — Knowledge storage
+
+## 📚 Learned
+
+XeZenOn uses a local knowledge system stored in the Android application assets.
+
+The official knowledge directory is:
+
+`app/src/main/assets/Learned/`
+
+The `Learned/` directory contains the knowledge files used by the **KnowledgeEngine**.
+
+The previous knowledge directory:
+
+`BoxHead/Learned/`
+
+is now considered **Legacy** and is no longer used as the active knowledge source.
 
 ## 🌍 Languages
 
@@ -47,8 +64,10 @@ XeZenOn currently supports:
 - 🧩 Modular architecture
 - 🌍 Multilingual interaction
 - 🎯 Intent detection
-- 📚 Local knowledge
+- 📚 Local knowledge system
 - 📜 Rule-based behavior
+- 💾 Learned responses
+- 🧠 Knowledge loading through Android Assets
 - 📱 Android native application
 
 ## 🔧 Development
@@ -65,34 +84,35 @@ XeZenOn currently supports:
 
 ### Build
 
-```bash
-git clone https://github.com/ToolGits/XeZenOn.git
-cd XeZenOn
-./gradlew assembleDebug
-```
+Clone the repository and run:
+
+`git clone https://github.com/ToolGits/XeZenOn.git`
+
+`cd XeZenOn`
+
+`./gradlew assembleDebug`
 
 APK output:
 
-```text
-app/build/outputs/apk/debug/app-debug.apk
-```
+`app/build/outputs/apk/debug/app-debug.apk`
 
 ## 🧪 Stable
 
-**XeZenOn 1.0.0** is the first stable release.
+**XeZenOn 1.1.1** is the current stable release.
 
-The core system was successfully tested on real Android hardware, including:
+The core system has been tested on real Android hardware, including:
 
 - ✅ Application startup
 - ✅ Brain processing
 - ✅ Language detection
 - ✅ Intent detection
+- ✅ Knowledge loading
 - ✅ Knowledge lookup
 - ✅ Response generation
 - ✅ Multilingual responses
 
 > [!NOTE]
-> Stable does not mean development has stopped. Future versions can continue improving the brain, knowledge system, and user interface.
+> Stable does not mean development has stopped. Future versions can continue improving the brain, knowledge system, reasoning, and user interface.
 
 ## 🛣️ Future
 
@@ -102,6 +122,7 @@ The core system was successfully tested on real Android hardware, including:
 - 🌍 More languages
 - 🎯 More intents
 - ⚙️ Improved Android integration
+- 🧠 Better conversational context
 
 ## 🏢 ToolGits
 
