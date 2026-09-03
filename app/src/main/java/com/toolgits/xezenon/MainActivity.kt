@@ -63,7 +63,7 @@ class MainActivity : Activity() {
 
         val input = EditText(this).apply {
             hint = "Type a message..."
-            singleLine = true
+            setSingleLine(true)
             background = getDrawable(
                 com.toolgits.xezenon.R.drawable.input_background
             )
@@ -78,7 +78,7 @@ class MainActivity : Activity() {
         val sendButton = Button(this).apply {
             text = "Send"
             textSize = 14f
-            allCaps = false
+            setAllCaps(false)
         }
 
         val inputLayout = LinearLayout(this).apply {
