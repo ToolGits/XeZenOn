@@ -8,6 +8,7 @@
 
     <color name="input_text">#202020</color>
     <color name="input_hint">#757575</color>
+    <color name="input_background">#F1F1F1</color>
 
     <color name="user_text">#FFFFFF</color>
     <color name="xezenon_text">#232323</color>
