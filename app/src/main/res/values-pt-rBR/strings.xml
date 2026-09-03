@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name">XeZenOn</string>
+    <string name="subtitle">Uma semi-IA leve</string>
+    <string name="input_hint">Digite uma mensagem...</string>
+    <string name="send">Enviar</string>
+    <string name="user_label">Você</string>
+    <string name="xezenon_label">XeZenOn</string>
+
+</resources>
