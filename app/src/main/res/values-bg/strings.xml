@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name">XeZenOn</string>
+    <string name="subtitle">Лека полу-ИИ</string>
+    <string name="input_hint">Въведете съобщение...</string>
+    <string name="send">Изпрати</string>
+    <string name="user_label">Вие</string>
+    <string name="xezenon_label">XeZenOn</string>
+
+</resources>
