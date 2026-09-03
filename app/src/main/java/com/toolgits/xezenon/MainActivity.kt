@@ -11,6 +11,8 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import com.toolgits.xezenon.boxhead.Braindroid
+import com.toolgits.xezenon.boxhead.Language
+import com.toolgits.xezenon.boxhead.LanguageDetector
 
 class MainActivity : Activity() {
 
@@ -18,10 +20,23 @@ class MainActivity : Activity() {
     private lateinit var conversation: LinearLayout
     private lateinit var scrollView: ScrollView
 
+    private lateinit var userLabel: String
+    private lateinit var xezenonLabel: String
+    private lateinit var inputHint: String
+    private lateinit var sendLabel: String
+    private lateinit var subtitleText: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         brain = Braindroid(this)
+
+        val deviceLanguage =
+            LanguageDetector.detectDeviceLanguage(this)
+
+        configureInterfaceLanguage(
+            deviceLanguage
+        )
 
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -38,7 +53,7 @@ class MainActivity : Activity() {
         }
 
         val subtitle = TextView(this).apply {
-            text = "A lightweight semi-AI"
+            text = subtitleText
             textSize = 15f
             gravity = Gravity.CENTER
             setTextColor(Color.GRAY)
@@ -62,10 +77,11 @@ class MainActivity : Activity() {
         }
 
         val input = EditText(this).apply {
-            hint = "Type a message..."
+            hint = inputHint
             setSingleLine(true)
+
             background = getDrawable(
-                com.toolgits.xezenon.R.drawable.input_background
+                R.drawable.input_background
             )
 
             layoutParams = LinearLayout.LayoutParams(
@@ -76,7 +92,7 @@ class MainActivity : Activity() {
         }
 
         val sendButton = Button(this).apply {
-            text = "Send"
+            text = sendLabel
             textSize = 14f
             setAllCaps(false)
         }
@@ -98,22 +114,25 @@ class MainActivity : Activity() {
         )
 
         sendButton.setOnClickListener {
-            val message = input.text.toString().trim()
+
+            val message =
+                input.text.toString().trim()
 
             if (message.isEmpty()) {
                 return@setOnClickListener
             }
 
             addMessage(
-                "You",
+                userLabel,
                 message,
                 false
             )
 
-            val result = brain.think(message)
+            val result =
+                brain.think(message)
 
             addMessage(
-                "XeZenOn",
+                xezenonLabel,
                 result,
                 true
             )
@@ -140,44 +159,116 @@ class MainActivity : Activity() {
         setContentView(root)
     }
 
+    private fun configureInterfaceLanguage(
+        language: Language
+    ) {
+
+        when (language) {
+
+            Language.PORTUGUESE -> {
+                userLabel = "Você"
+                xezenonLabel = "XeZenOn"
+                inputHint = "Digite uma mensagem..."
+                sendLabel = "Enviar"
+                subtitleText = "Uma semi-IA leve"
+            }
+
+            Language.ENGLISH -> {
+                userLabel = "You"
+                xezenonLabel = "XeZenOn"
+                inputHint = "Type a message..."
+                sendLabel = "Send"
+                subtitleText = "A lightweight semi-AI"
+            }
+
+            Language.GERMAN -> {
+                userLabel = "Du"
+                xezenonLabel = "XeZenOn"
+                inputHint = "Nachricht eingeben..."
+                sendLabel = "Senden"
+                subtitleText = "Eine leichte Semi-KI"
+            }
+
+            Language.BULGARIAN -> {
+                userLabel = "Вие"
+                xezenonLabel = "XeZenOn"
+                inputHint = "Въведете съобщение..."
+                sendLabel = "Изпрати"
+                subtitleText = "Лека полу-ИИ"
+            }
+
+            Language.SPANISH -> {
+                userLabel = "Tú"
+                xezenonLabel = "XeZenOn"
+                inputHint = "Escribe un mensaje..."
+                sendLabel = "Enviar"
+                subtitleText = "Una semi-IA ligera"
+            }
+        }
+    }
+
     private fun addMessage(
         sender: String,
         message: String,
         xezenon: Boolean
     ) {
-        val messageText = TextView(this).apply {
-            text = "$sender\n$message"
-            textSize = 17f
-            setPadding(16, 12, 16, 12)
-            setTextColor(
-                if (xezenon) {
-                    Color.rgb(35, 35, 35)
-                } else {
-                    Color.WHITE
-                }
+
+        val messageText =
+            TextView(this).apply {
+
+                text =
+                    "$sender\n$message"
+
+                textSize = 17f
+
+                setPadding(
+                    16,
+                    12,
+                    16,
+                    12
+                )
+
+                setTextColor(
+                    if (xezenon) {
+                        Color.rgb(
+                            35,
+                            35,
+                            35
+                        )
+                    } else {
+                        Color.WHITE
+                    }
+                )
+
+                background =
+                    getDrawable(
+                        if (xezenon) {
+                            R.drawable.message_xezenon
+                        } else {
+                            R.drawable.message_user
+                        }
+                    )
+            }
+
+        val params =
+            LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
             )
 
-            background = getDrawable(
-                if (xezenon) {
-                    R.drawable.message_xezenon
-                } else {
-                    R.drawable.message_user
-                }
-            )
-        }
+        params.gravity =
+            if (xezenon) {
+                Gravity.START
+            } else {
+                Gravity.END
+            }
 
-        val params = LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
+        params.setMargins(
+            8,
+            6,
+            8,
+            6
         )
-
-        params.gravity = if (xezenon) {
-            Gravity.START
-        } else {
-            Gravity.END
-        }
-
-        params.setMargins(8, 6, 8, 6)
 
         conversation.addView(
             messageText,
