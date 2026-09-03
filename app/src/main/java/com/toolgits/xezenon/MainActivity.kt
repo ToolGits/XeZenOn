@@ -1,7 +1,6 @@
 package com.toolgits.xezenon
 
 import android.app.Activity
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
@@ -11,6 +10,9 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import com.toolgits.xezenon.boxhead.Braindroid
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 
 class MainActivity : Activity() {
 
@@ -25,15 +27,35 @@ class MainActivity : Activity() {
 
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setPadding(20, 20, 20, 20)
-            setBackgroundColor(Color.WHITE)
+            setBackgroundColor(
+                getColor(R.color.app_background)
+            )
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
+
+            val systemBars =
+                insets.getInsets(
+                    WindowInsetsCompat.Type.systemBars()
+                )
+
+            view.updatePadding(
+                left = systemBars.left + 20,
+                top = systemBars.top + 20,
+                right = systemBars.right + 20,
+                bottom = systemBars.bottom + 20
+            )
+
+            insets
         }
 
         val title = TextView(this).apply {
             text = getString(R.string.app_name) + " 🤖"
             textSize = 30f
             gravity = Gravity.CENTER
-            setTextColor(Color.rgb(40, 40, 40))
+            setTextColor(
+                getColor(R.color.primary_text)
+            )
             setPadding(0, 8, 0, 2)
         }
 
@@ -41,7 +63,9 @@ class MainActivity : Activity() {
             text = getString(R.string.subtitle)
             textSize = 15f
             gravity = Gravity.CENTER
-            setTextColor(Color.GRAY)
+            setTextColor(
+                getColor(R.color.secondary_text)
+            )
             setPadding(0, 0, 0, 18)
         }
 
@@ -64,6 +88,12 @@ class MainActivity : Activity() {
         val input = EditText(this).apply {
             hint = getString(R.string.input_hint)
             setSingleLine(true)
+            setTextColor(
+                getColor(R.color.input_text)
+            )
+            setHintTextColor(
+                getColor(R.color.input_hint)
+            )
 
             background = getDrawable(
                 R.drawable.input_background
@@ -166,15 +196,13 @@ class MainActivity : Activity() {
                 )
 
                 setTextColor(
-                    if (xezenon) {
-                        Color.rgb(
-                            35,
-                            35,
-                            35
-                        )
-                    } else {
-                        Color.WHITE
-                    }
+                    getColor(
+                        if (xezenon) {
+                            R.color.xezenon_text
+                        } else {
+                            R.color.user_text
+                        }
+                    )
                 )
 
                 background =
