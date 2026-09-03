@@ -8,6 +8,7 @@
 
     <color name="input_text">#FFFFFF</color>
     <color name="input_hint">#B0B0B0</color>
+    <color name="input_background">#292929</color>
 
     <color name="user_text">#FFFFFF</color>
     <color name="xezenon_text">#FFFFFF</color>
