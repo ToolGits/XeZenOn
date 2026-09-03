@@ -12,6 +12,9 @@ class KnowledgeEngine(
     private var loaded =
         false
 
+    private var currentSubject =
+        ""
+
     fun load() {
 
         if (loaded) {
@@ -42,6 +45,9 @@ class KnowledgeEngine(
         fileName: String
     ) {
 
+        currentSubject =
+            subjectFromFile(fileName)
+
         try {
 
             context.assets
@@ -50,22 +56,23 @@ class KnowledgeEngine(
                 .useLines { lines ->
 
                     lines.forEach { line ->
-                        parseLine(line)
+
+                        parseLine(
+                            line,
+                            fileName
+                        )
                     }
                 }
 
         } catch (
             exception: Exception
         ) {
-
-            // Ignore files that cannot
-            // be read without crashing
-            // the entire knowledge system.
         }
     }
 
     private fun parseLine(
-        line: String
+        line: String,
+        fileName: String
     ) {
 
         val text =
@@ -77,6 +84,61 @@ class KnowledgeEngine(
         ) {
             return
         }
+
+        if (text.contains("->")) {
+
+            parseStructuredLine(text)
+
+            return
+        }
+
+        if (
+            text.equals(
+                "NeLixk Learning",
+                ignoreCase = true
+            )
+        ) {
+            return
+        }
+
+        if (
+            text.equals(
+                "Creator",
+                ignoreCase = true
+            )
+        ) {
+            currentSubject =
+                "Creator"
+
+            return
+        }
+
+        if (
+            text.length < 3
+        ) {
+            return
+        }
+
+        val subject =
+            if (currentSubject.isNotEmpty()) {
+                currentSubject
+            } else {
+                subjectFromFile(fileName)
+            }
+
+        knowledgeBase.addFact(
+            subject = subject,
+            relation = "knowledge",
+            value = text,
+            keywords = extractKeywords(
+                text
+            )
+        )
+    }
+
+    private fun parseStructuredLine(
+        text: String
+    ) {
 
         val parts =
             text.split(
@@ -100,8 +162,41 @@ class KnowledgeEngine(
         knowledgeBase.addFact(
             subject = subject,
             relation = relation,
-            value = value
+            value = value,
+            keywords = extractKeywords(
+                "$subject $relation $value"
+            )
         )
+    }
+
+    private fun subjectFromFile(
+        fileName: String
+    ): String {
+
+        return fileName
+            .substringBeforeLast(".")
+            .replace("-", " ")
+            .replace("_", " ")
+            .trim()
+    }
+
+    private fun extractKeywords(
+        text: String
+    ): List<String> {
+
+        return text
+            .lowercase()
+            .replace(
+                Regex("[^\\p{L}\\p{N}\\s]"),
+                " "
+            )
+            .split(
+                Regex("\\s+")
+            )
+            .filter {
+                it.length >= 3
+            }
+            .distinct()
     }
 
     fun find(
@@ -146,7 +241,9 @@ class KnowledgeEngine(
     fun reload() {
 
         knowledgeBase.clear()
+
         loaded = false
+        currentSubject = ""
 
         load()
     }
