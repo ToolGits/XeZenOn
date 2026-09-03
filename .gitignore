@@ -80,6 +80,3 @@ google-services.json
 
 # Ignore .gitkeep files by default
 *.gitkeep
-
-# Keep the .gitkeep used by Android resources
-!app/src/main/res/.gitkeep
