@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-22:12
-INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-22:12
-INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-22:12
-INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-22:12
+ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-24:12
+INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-24:12
+INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-24:12
+INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-24:12
 	package
 		INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -13,30 +13,34 @@ INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:1-22:12
 	xmlns:android
 		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:3:11-69
 application
-ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:5:5-20:19
-INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:5:5-20:19
+ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:5:5-22:19
+INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:5:5-22:19
 	android:extractNativeLibs
 		INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml
+	android:supportsRtl
+		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:9:9-35
 	android:label
 		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:6:9-32
+	android:allowBackup
+		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:8:9-35
 	android:theme
 		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:7:9-72
 activity#com.toolgits.xezenon.MainActivity
-ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:9:9-18:20
+ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:11:9-20:20
 	android:exported
-		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:11:13-36
+		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:13:13-36
 	android:name
-		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:10:13-41
+		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:12:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:13:13-16:29
+ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:15:13-18:29
 action#android.intent.action.MAIN
-ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:14:17-69
+ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:16:17-69
 	android:name
-		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:14:25-66
+		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:16:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:15:17-77
+ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:17:17-77
 	android:name
-		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:15:27-74
+		ADDED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:17:27-74
 uses-sdk
 INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml

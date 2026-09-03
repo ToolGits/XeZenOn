@@ -1,1 +1,4 @@
 com.toolgits.xezenon
+drawable input_background
+drawable message_user
+drawable message_xezenon

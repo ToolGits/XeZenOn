@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.toolgits.xezenon"
-4    android:versionCode="2"
-5    android:versionName="1.0.0" >
+4    android:versionCode="3"
+5    android:versionName="1.1.1" >
 6
 7    <uses-sdk
 7-->INJECTED
@@ -12,31 +12,35 @@
 9-->INJECTED
 10
 11    <application
-11-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:5:5-20:19
-12        android:debuggable="true"
-13        android:extractNativeLibs="false"
-13-->INJECTED
-14        android:label="XeZenOn"
-14-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:6:9-32
-15        android:theme="@android:style/Theme.Material.Light.NoActionBar" >
-15-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:7:9-72
-16        <activity
-16-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:9:9-18:20
-17            android:name="com.toolgits.xezenon.MainActivity"
-17-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:10:13-41
-18            android:exported="true" >
-18-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:11:13-36
-19            <intent-filter>
-19-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:13:13-16:29
-20                <action android:name="android.intent.action.MAIN" />
-20-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:14:17-69
-20-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:14:25-66
-21
-22                <category android:name="android.intent.category.LAUNCHER" />
-22-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:15:17-77
-22-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:15:27-74
-23            </intent-filter>
-24        </activity>
-25    </application>
-26
-27</manifest>
+11-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:5:5-22:19
+12        android:allowBackup="true"
+12-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:8:9-35
+13        android:debuggable="true"
+14        android:extractNativeLibs="false"
+14-->INJECTED
+15        android:label="XeZenOn"
+15-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:6:9-32
+16        android:supportsRtl="true"
+16-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:9:9-35
+17        android:theme="@android:style/Theme.Material.Light.NoActionBar" >
+17-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:7:9-72
+18        <activity
+18-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:11:9-20:20
+19            android:name="com.toolgits.xezenon.MainActivity"
+19-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:12:13-41
+20            android:exported="true" >
+20-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:13:13-36
+21            <intent-filter>
+21-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:15:13-18:29
+22                <action android:name="android.intent.action.MAIN" />
+22-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:16:17-69
+22-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:16:25-66
+23
+24                <category android:name="android.intent.category.LAUNCHER" />
+24-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:17:17-77
+24-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:17:27-74
+25            </intent-filter>
+26        </activity>
+27    </application>
+28
+29</manifest>

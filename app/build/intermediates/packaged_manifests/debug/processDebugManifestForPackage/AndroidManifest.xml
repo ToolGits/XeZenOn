@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.toolgits.xezenon"
-    android:versionCode="2"
-    android:versionName="1.0.0" >
+    android:versionCode="3"
+    android:versionName="1.1.1" >
 
     <uses-sdk
         android:minSdkVersion="23"
         android:targetSdkVersion="36" />
 
     <application
+        android:allowBackup="true"
         android:debuggable="true"
         android:extractNativeLibs="false"
         android:label="XeZenOn"
+        android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.Light.NoActionBar" >
         <activity
             android:name="com.toolgits.xezenon.MainActivity"

@@ -1,0 +1,3 @@
+int drawable input_background 0x7f010000
+int drawable message_user 0x7f010001
+int drawable message_xezenon 0x7f010002
