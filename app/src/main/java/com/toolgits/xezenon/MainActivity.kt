@@ -1,6 +1,7 @@
 package com.toolgits.xezenon
 
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.ViewGroup
@@ -24,21 +25,24 @@ class MainActivity : Activity() {
 
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setPadding(24, 24, 24, 24)
+            setPadding(20, 20, 20, 20)
+            setBackgroundColor(Color.WHITE)
         }
 
         val title = TextView(this).apply {
             text = "XeZenOn 🤖"
             textSize = 30f
             gravity = Gravity.CENTER
-            setPadding(0, 0, 0, 8)
+            setTextColor(Color.rgb(40, 40, 40))
+            setPadding(0, 8, 0, 2)
         }
 
         val subtitle = TextView(this).apply {
             text = "A lightweight semi-AI"
-            textSize = 16f
+            textSize = 15f
             gravity = Gravity.CENTER
-            setPadding(0, 0, 0, 20)
+            setTextColor(Color.GRAY)
+            setPadding(0, 0, 0, 18)
         }
 
         conversation = LinearLayout(this).apply {
@@ -47,13 +51,8 @@ class MainActivity : Activity() {
         }
 
         scrollView = ScrollView(this).apply {
-            addView(
-                conversation,
-                ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-            )
+            isFillViewport = true
+            addView(conversation)
 
             layoutParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -65,6 +64,10 @@ class MainActivity : Activity() {
         val input = EditText(this).apply {
             hint = "Type a message..."
             singleLine = true
+            background = getDrawable(
+                com.toolgits.xezenon.R.drawable.input_background
+            )
+
             layoutParams = LinearLayout.LayoutParams(
                 0,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -74,6 +77,8 @@ class MainActivity : Activity() {
 
         val sendButton = Button(this).apply {
             text = "Send"
+            textSize = 14f
+            allCaps = false
         }
 
         val inputLayout = LinearLayout(this).apply {
@@ -99,17 +104,32 @@ class MainActivity : Activity() {
                 return@setOnClickListener
             }
 
-            addMessage("You", message)
+            addMessage(
+                "You",
+                message,
+                false
+            )
 
             val result = brain.think(message)
 
-            addMessage("XeZenOn", result)
+            addMessage(
+                "XeZenOn",
+                result,
+                true
+            )
 
             input.text.clear()
 
             scrollView.post {
-                scrollView.fullScroll(ScrollView.FOCUS_DOWN)
+                scrollView.fullScroll(
+                    ScrollView.FOCUS_DOWN
+                )
             }
+        }
+
+        input.setOnEditorActionListener { _, _, _ ->
+            sendButton.performClick()
+            true
         }
 
         root.addView(title)
@@ -122,20 +142,46 @@ class MainActivity : Activity() {
 
     private fun addMessage(
         sender: String,
-        message: String
+        message: String,
+        xezenon: Boolean
     ) {
-        val textView = TextView(this).apply {
-            text = "$sender: $message"
-            textSize = 18f
-            setPadding(12, 10, 12, 10)
+        val messageText = TextView(this).apply {
+            text = "$sender\n$message"
+            textSize = 17f
+            setPadding(16, 12, 16, 12)
+            setTextColor(
+                if (xezenon) {
+                    Color.rgb(35, 35, 35)
+                } else {
+                    Color.WHITE
+                }
+            )
+
+            background = getDrawable(
+                if (xezenon) {
+                    R.drawable.message_xezenon
+                } else {
+                    R.drawable.message_user
+                }
+            )
         }
 
+        val params = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        params.gravity = if (xezenon) {
+            Gravity.START
+        } else {
+            Gravity.END
+        }
+
+        params.setMargins(8, 6, 8, 6)
+
         conversation.addView(
-            textView,
-            LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
+            messageText,
+            params
         )
     }
 }
