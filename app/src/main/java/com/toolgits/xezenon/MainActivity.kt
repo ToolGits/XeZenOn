@@ -11,8 +11,6 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import com.toolgits.xezenon.boxhead.Braindroid
-import com.toolgits.xezenon.boxhead.Language
-import com.toolgits.xezenon.boxhead.LanguageDetector
 
 class MainActivity : Activity() {
 
@@ -20,23 +18,10 @@ class MainActivity : Activity() {
     private lateinit var conversation: LinearLayout
     private lateinit var scrollView: ScrollView
 
-    private lateinit var userLabel: String
-    private lateinit var xezenonLabel: String
-    private lateinit var inputHint: String
-    private lateinit var sendLabel: String
-    private lateinit var subtitleText: String
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         brain = Braindroid(this)
-
-        val deviceLanguage =
-            LanguageDetector.detectDeviceLanguage(this)
-
-        configureInterfaceLanguage(
-            deviceLanguage
-        )
 
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -45,7 +30,7 @@ class MainActivity : Activity() {
         }
 
         val title = TextView(this).apply {
-            text = "XeZenOn 🤖"
+            text = getString(R.string.app_name) + " 🤖"
             textSize = 30f
             gravity = Gravity.CENTER
             setTextColor(Color.rgb(40, 40, 40))
@@ -53,7 +38,7 @@ class MainActivity : Activity() {
         }
 
         val subtitle = TextView(this).apply {
-            text = subtitleText
+            text = getString(R.string.subtitle)
             textSize = 15f
             gravity = Gravity.CENTER
             setTextColor(Color.GRAY)
@@ -77,7 +62,7 @@ class MainActivity : Activity() {
         }
 
         val input = EditText(this).apply {
-            hint = inputHint
+            hint = getString(R.string.input_hint)
             setSingleLine(true)
 
             background = getDrawable(
@@ -92,7 +77,7 @@ class MainActivity : Activity() {
         }
 
         val sendButton = Button(this).apply {
-            text = sendLabel
+            text = getString(R.string.send)
             textSize = 14f
             setAllCaps(false)
         }
@@ -123,7 +108,7 @@ class MainActivity : Activity() {
             }
 
             addMessage(
-                userLabel,
+                getString(R.string.user_label),
                 message,
                 false
             )
@@ -132,7 +117,7 @@ class MainActivity : Activity() {
                 brain.think(message)
 
             addMessage(
-                xezenonLabel,
+                getString(R.string.xezenon_label),
                 result,
                 true
             )
@@ -157,54 +142,6 @@ class MainActivity : Activity() {
         root.addView(inputLayout)
 
         setContentView(root)
-    }
-
-    private fun configureInterfaceLanguage(
-        language: Language
-    ) {
-
-        when (language) {
-
-            Language.PORTUGUESE -> {
-                userLabel = "Você"
-                xezenonLabel = "XeZenOn"
-                inputHint = "Digite uma mensagem..."
-                sendLabel = "Enviar"
-                subtitleText = "Uma semi-IA leve"
-            }
-
-            Language.ENGLISH -> {
-                userLabel = "You"
-                xezenonLabel = "XeZenOn"
-                inputHint = "Type a message..."
-                sendLabel = "Send"
-                subtitleText = "A lightweight semi-AI"
-            }
-
-            Language.GERMAN -> {
-                userLabel = "Du"
-                xezenonLabel = "XeZenOn"
-                inputHint = "Nachricht eingeben..."
-                sendLabel = "Senden"
-                subtitleText = "Eine leichte Semi-KI"
-            }
-
-            Language.BULGARIAN -> {
-                userLabel = "Вие"
-                xezenonLabel = "XeZenOn"
-                inputHint = "Въведете съобщение..."
-                sendLabel = "Изпрати"
-                subtitleText = "Лека полу-ИИ"
-            }
-
-            Language.SPANISH -> {
-                userLabel = "Tú"
-                xezenonLabel = "XeZenOn"
-                inputHint = "Escribe un mensaje..."
-                sendLabel = "Enviar"
-                subtitleText = "Una semi-IA ligera"
-            }
-        }
     }
 
     private fun addMessage(
