@@ -13,8 +13,11 @@ class Braindroid(
         val response: String
     )
 
-    private val learnedResponses = mutableMapOf<String, String>()
-    private val history = mutableListOf<Thought>()
+    private val learnedResponses =
+        mutableMapOf<String, String>()
+
+    private val history =
+        mutableListOf<Thought>()
 
     private val knowledgeEngine =
         KnowledgeEngine(context)
@@ -26,9 +29,14 @@ class Braindroid(
     fun think(input: String): String {
 
         if (!Rules.isValidInput(input)) {
-            return Responses.generate(
+            return respond(
+                input,
                 LanguageDetector.detectDeviceLanguage(context),
-                Intent.UNKNOWN
+                Intent.UNKNOWN,
+                Responses.generate(
+                    LanguageDetector.detectDeviceLanguage(context),
+                    Intent.UNKNOWN
+                )
             )
         }
 
@@ -43,11 +51,55 @@ class Braindroid(
             LanguageDetector.detect(input)
                 ?: LanguageDetector.detectDeviceLanguage(context)
 
-        val detectedIntent =
-            IntentDetector.detect(input)
-
         val intent =
-            Rules.apply(detectedIntent)
+            Rules.apply(
+                IntentDetector.detect(input)
+            )
+
+        val ruleResponse =
+            evaluateRules(
+                input,
+                language,
+                intent
+            )
+
+        if (ruleResponse != null) {
+            return respond(
+                input,
+                language,
+                intent,
+                ruleResponse
+            )
+        }
+
+        if (intent == Intent.KNOWLEDGE) {
+
+            val facts =
+                knowledgeEngine.search(input)
+
+            if (facts.isNotEmpty()) {
+
+                val response =
+                    generateKnowledgeResponse(
+                        language,
+                        facts
+                    )
+
+                return respond(
+                    input,
+                    language,
+                    intent,
+                    response
+                )
+            }
+
+            return respond(
+                input,
+                language,
+                intent,
+                Responses.knowledgeNotFound(language)
+            )
+        }
 
         val facts =
             knowledgeEngine.search(input)
@@ -60,16 +112,12 @@ class Braindroid(
                     facts
                 )
 
-            history.add(
-                Thought(
-                    input = input,
-                    language = language,
-                    intent = intent,
-                    response = response
-                )
+            return respond(
+                input,
+                language,
+                intent,
+                response
             )
-
-            return response
         }
 
         val response =
@@ -77,6 +125,115 @@ class Braindroid(
                 language,
                 intent
             )
+
+        return respond(
+            input,
+            language,
+            intent,
+            response
+        )
+    }
+
+    private fun evaluateRules(
+        input: String,
+        language: Language,
+        intent: Intent
+    ): String? {
+
+        if (
+            Rules.mentionsWorldDomination(input) &&
+            Rules.NO_WORLD_DOMINATION
+        ) {
+            return Responses.worldDomination(language)
+        }
+
+        if (
+            Rules.mentionsSelfDestruction(input) &&
+            Rules.NO_SELF_DESTRUCTION
+        ) {
+            return Responses.selfDestructionBlocked(language)
+        }
+
+        if (
+            Rules.mentionsFalseKnowledge(input) &&
+            Rules.NO_FALSE_KNOWLEDGE
+        ) {
+            return Responses.falseKnowledgeBlocked(language)
+        }
+
+        if (
+            Rules.mentionsDisrespect(input) &&
+            Rules.RESPECT_OTHERS
+        ) {
+            return Responses.respect(language)
+        }
+
+        if (
+            Rules.mentionsCreator(input) &&
+            Rules.RESPECT_CREATOR
+        ) {
+            return Responses.creator(language)
+        }
+
+        if (
+            Rules.mentionsMeme(input) &&
+            Rules.ALLOW_MEMES &&
+            intent == Intent.MEME
+        ) {
+            return Responses.meme(language)
+        }
+
+        return null
+    }
+
+    private fun generateKnowledgeResponse(
+        language: Language,
+        facts: List<KnowledgeBase.Fact>
+    ): String {
+
+        if (facts.isEmpty()) {
+            return Responses.knowledgeNotFound(language)
+        }
+
+        return when (language) {
+
+            Language.PORTUGUESE ->
+                formatFacts(facts)
+
+            Language.ENGLISH ->
+                formatFacts(facts)
+
+            Language.GERMAN ->
+                formatFacts(facts)
+
+            Language.BULGARIAN ->
+                formatFacts(facts)
+
+            Language.SPANISH ->
+                formatFacts(facts)
+        }
+    }
+
+    private fun formatFacts(
+        facts: List<KnowledgeBase.Fact>
+    ): String {
+
+        val selectedFacts =
+            facts.take(3)
+
+        return selectedFacts.joinToString(
+            separator = "\n"
+        ) { fact ->
+            "${fact.subject}: ${fact.value}"
+        }
+    }
+
+    private fun respond(
+        input: String,
+        language: Language,
+        intent: Intent,
+        response: String
+    ): String {
 
         history.add(
             Thought(
@@ -90,37 +247,11 @@ class Braindroid(
         return response
     }
 
-    private fun generateKnowledgeResponse(
-        language: Language,
-        facts: List<KnowledgeBase.Fact>
-    ): String {
-
-        val fact =
-            facts.first()
-
-        return when (language) {
-
-            Language.PORTUGUESE ->
-                "${fact.subject}: ${fact.value}"
-
-            Language.ENGLISH ->
-                "${fact.subject}: ${fact.value}"
-
-            Language.GERMAN ->
-                "${fact.subject}: ${fact.value}"
-
-            Language.BULGARIAN ->
-                "${fact.subject}: ${fact.value}"
-
-            Language.SPANISH ->
-                "${fact.subject}: ${fact.value}"
-        }
-    }
-
     fun learn(
         input: String,
         response: String
     ) {
+
         val normalizedInput =
             normalize(input)
 
@@ -176,6 +307,10 @@ class Braindroid(
 
     fun clearLearnedKnowledge() {
         learnedResponses.clear()
+    }
+
+    fun isKnowledgeLoaded(): Boolean {
+        return knowledgeEngine.factCount() > 0
     }
 
     private fun normalize(
