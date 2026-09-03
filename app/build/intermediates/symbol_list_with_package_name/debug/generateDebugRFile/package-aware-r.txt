@@ -1,4 +1,23 @@
 com.toolgits.xezenon
+color accent
+color app_background
+color input_background
+color input_hint
+color input_text
+color primary_text
+color secondary_text
+color user_message_background
+color user_text
+color xezenon_message_background
+color xezenon_text
 drawable input_background
 drawable message_user
 drawable message_xezenon
+string app_name
+string input_hint
+string send
+string subtitle
+string user_label
+string xezenon_label
+style XeZenOnTheme
+xml locale_config

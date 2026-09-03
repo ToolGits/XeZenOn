@@ -11,36 +11,107 @@
 9        android:targetSdkVersion="36" />
 9-->INJECTED
 10
-11    <application
-11-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:5:5-22:19
-12        android:allowBackup="true"
-12-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:8:9-35
-13        android:debuggable="true"
-14        android:extractNativeLibs="false"
-14-->INJECTED
-15        android:label="XeZenOn"
-15-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:6:9-32
-16        android:supportsRtl="true"
-16-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:9:9-35
-17        android:theme="@android:style/Theme.Material.Light.NoActionBar" >
-17-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:7:9-72
-18        <activity
-18-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:11:9-20:20
-19            android:name="com.toolgits.xezenon.MainActivity"
-19-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:12:13-41
-20            android:exported="true" >
-20-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:13:13-36
-21            <intent-filter>
-21-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:15:13-18:29
-22                <action android:name="android.intent.action.MAIN" />
-22-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:16:17-69
-22-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:16:25-66
-23
-24                <category android:name="android.intent.category.LAUNCHER" />
-24-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:17:17-77
-24-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:17:27-74
-25            </intent-filter>
-26        </activity>
-27    </application>
-28
-29</manifest>
+11    <permission
+11-->[androidx.core:core:1.17.0] /home/toollibs/.gradle/caches/9.5.0/transforms/fc636f097f678fd110d624e0f7c0c76d/transformed/core-1.17.0/AndroidManifest.xml:22:5-24:47
+12        android:name="com.toolgits.xezenon.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+12-->[androidx.core:core:1.17.0] /home/toollibs/.gradle/caches/9.5.0/transforms/fc636f097f678fd110d624e0f7c0c76d/transformed/core-1.17.0/AndroidManifest.xml:23:9-81
+13        android:protectionLevel="signature" />
+13-->[androidx.core:core:1.17.0] /home/toollibs/.gradle/caches/9.5.0/transforms/fc636f097f678fd110d624e0f7c0c76d/transformed/core-1.17.0/AndroidManifest.xml:24:9-44
+14
+15    <uses-permission android:name="com.toolgits.xezenon.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+15-->[androidx.core:core:1.17.0] /home/toollibs/.gradle/caches/9.5.0/transforms/fc636f097f678fd110d624e0f7c0c76d/transformed/core-1.17.0/AndroidManifest.xml:26:5-97
+15-->[androidx.core:core:1.17.0] /home/toollibs/.gradle/caches/9.5.0/transforms/fc636f097f678fd110d624e0f7c0c76d/transformed/core-1.17.0/AndroidManifest.xml:26:22-94
+16
+17    <application
+17-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:5:5-24:19
+18        android:allowBackup="true"
+18-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:6:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.17.0] /home/toollibs/.gradle/caches/9.5.0/transforms/fc636f097f678fd110d624e0f7c0c76d/transformed/core-1.17.0/AndroidManifest.xml:28:18-86
+20        android:debuggable="true"
+21        android:extractNativeLibs="false"
+21-->INJECTED
+22        android:label="@string/app_name"
+22-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:7:9-41
+23        android:localeConfig="@xml/locale_config"
+23-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:8:9-50
+24        android:supportsRtl="true"
+24-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:9:9-35
+25        android:theme="@style/XeZenOnTheme" >
+25-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:10:9-44
+26        <activity
+26-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:12:9-22:20
+27            android:name="com.toolgits.xezenon.MainActivity"
+27-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:13:13-41
+28            android:exported="true"
+28-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:14:13-36
+29            android:windowSoftInputMode="adjustResize" >
+29-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:15:13-55
+30            <intent-filter>
+30-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:17:13-20:29
+31                <action android:name="android.intent.action.MAIN" />
+31-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:18:17-69
+31-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:18:25-66
+32
+33                <category android:name="android.intent.category.LAUNCHER" />
+33-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:19:17-77
+33-->/home/toollibs/XeZenOn/app/src/main/AndroidManifest.xml:19:27-74
+34            </intent-filter>
+35        </activity>
+36
+37        <provider
+37-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+38            android:name="androidx.startup.InitializationProvider"
+38-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:25:13-67
+39            android:authorities="com.toolgits.xezenon.androidx-startup"
+39-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:26:13-68
+40            android:exported="false" >
+40-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:27:13-37
+41            <meta-data
+41-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+42                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+42-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+43                android:value="androidx.startup" />
+43-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+44        </provider>
+45
+46        <receiver
+46-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+47            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+47-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+48            android:directBootAware="false"
+48-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+49            android:enabled="true"
+49-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+50            android:exported="true"
+50-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+51            android:permission="android.permission.DUMP" >
+51-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+52            <intent-filter>
+52-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+53                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+53-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+53-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+54            </intent-filter>
+55            <intent-filter>
+55-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+56                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+56-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+56-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+57            </intent-filter>
+58            <intent-filter>
+58-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+59                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+59-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+59-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+60            </intent-filter>
+61            <intent-filter>
+61-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+62                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+62-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+62-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/toollibs/.gradle/caches/9.5.0/transforms/93829f5f7304dbc1be6e0e92379ef9be/transformed/profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+63            </intent-filter>
+64        </receiver>
+65    </application>
+66
+67</manifest>
