@@ -11,6 +11,8 @@
 
     <color name="user_text">#FFFFFF</color>
     <color name="xezenon_text">#232323</color>
+    <color name="user_message_background">#3F51B5</color>
+    <color name="xezenon_message_background">#E8EAF6</color>
 
     <color name="accent">#3F51B5</color>
 
