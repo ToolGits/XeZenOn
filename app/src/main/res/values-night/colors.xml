@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="app_background">#121212</color>
+    <color name="primary_text">#FFFFFF</color>
+    <color name="secondary_text">#BDBDBD</color>
+
+    <color name="input_text">#FFFFFF</color>
+    <color name="input_hint">#B0B0B0</color>
+
+    <color name="user_text">#FFFFFF</color>
+    <color name="xezenon_text">#FFFFFF</color>
+
+    <color name="accent">#9FA8DA</color>
+
+</resources>
