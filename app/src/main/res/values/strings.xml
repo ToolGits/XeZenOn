@@ -3,5 +3,10 @@
 <resources>
 
     <string name="app_name">XeZenOn</string>
+    <string name="subtitle">A lightweight semi-AI</string>
+    <string name="input_hint">Type a message...</string>
+    <string name="send">Send</string>
+    <string name="user_label">You</string>
+    <string name="xezenon_label">XeZenOn</string>
 
 </resources>
