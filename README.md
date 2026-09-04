@@ -15,37 +15,45 @@
 
 **XeZenOn** is a **ToolGits** project exploring the development of a lightweight semi-AI for Android.
 
-Its intelligence is built around rules, intents, language detection, responses, memory, and a local knowledge system.
+Its intelligence is built around rules, intents, language detection, responses, learned responses, conversation history, and a local knowledge system.
 
-XeZenOn is designed to evolve gradually without relying on a large external AI model.
+XeZenOn is designed to evolve gradually through modular systems without relying on a large external AI model.
 
 ## 🧠 BoxHead
 
-**BoxHead** is the core of XeZenOn.
+**BoxHead** is the core intelligence system of XeZenOn.
 
-- `braindroid.kt` — Main brain
-- `rules.kt` — Behavioral rules
-- `language.kt` — Language detection
-- `intents.kt` — Intent detection
-- `responses.kt` — Response generation
-- `KnowledgeEngine.kt` — Knowledge loading and search
-- `KnowledgeBase.kt` — Knowledge storage
+It coordinates the main processing stages used to understand an input and generate a response.
+
+| Component | Description |
+|---|---|
+| `braindroid.kt` | Main brain and processing pipeline |
+| `rules.kt` | Behavioral rules and restrictions |
+| `language.kt` | Language detection |
+| `intents.kt` | Intent detection |
+| `responses.kt` | Response generation |
+| `KnowledgeEngine.kt` | Knowledge loading, searching, and management |
+| `KnowledgeBase.kt` | Knowledge storage and representation |
+
+The BoxHead system is designed to keep the intelligence modular, allowing individual systems to evolve without requiring the entire application to be redesigned.
 
 ## 📚 Learned
 
-XeZenOn uses a local knowledge system stored in the Android application assets.
+XeZenOn includes a local knowledge system for providing information without depending on an external AI model.
 
-The official knowledge directory is:
+The active knowledge directory is:
 
 `app/src/main/assets/Learned/`
 
-The `Learned/` directory contains the knowledge files used by the **KnowledgeEngine**.
+The `Learned/` directory contains the knowledge files loaded by the **KnowledgeEngine**.
 
 The previous knowledge directory:
 
 `BoxHead/Learned/`
 
 is now considered **Legacy** and is no longer used as the active knowledge source.
+
+The KnowledgeEngine can load the available knowledge, search through it, and provide relevant information to the BoxHead.
 
 ## 🌍 Languages
 
@@ -63,35 +71,35 @@ XeZenOn currently supports:
 ## ✨ Features
 
 - 🧠 Lightweight semi-AI
-- 🧩 Modular architecture
+- 🧩 Modular intelligence architecture
 - 🌍 Multilingual interaction
 - 🎯 Intent detection
-- 📚 Local knowledge system
 - 📜 Rule-based behavior
 - 💾 Learned responses
-- 🧠 Knowledge loading through Android Assets
+- 📚 Local knowledge system
 - 🔎 Local knowledge lookup
+- 🧠 Knowledge loading through Android Assets
 - 💬 Conversational message history
 - 📜 Scrollable conversation view
 - 🗨️ Separate user and XeZenOn message bubbles
 - ⌨️ Native text input
 - 📤 Message sending through the Android UI
-- 📱 Android native application
+- 📱 Native Android application
 
 ## 🎨 Interface
 
-XeZenOn 1.1.1 includes an improved native Android chat interface.
+XeZenOn 1.1.1 includes an improved native Android chat interface designed to keep the application simple and lightweight.
 
 The interface provides:
 
 - 🤖 XeZenOn title and subtitle
 - 💬 Accumulated conversation history
-- 👤 User messages aligned separately
+- 👤 User messages displayed separately
 - 🤖 XeZenOn responses displayed separately
 - 📜 Automatic scrolling to the latest message
-- ⌨️ Text input field
+- ⌨️ Native text input field
 - 📤 Send button
-- 📱 Native Android components without additional UI dependencies
+- 📱 Native Android components
 
 The interface is intentionally lightweight and built directly with Android native components.
 
@@ -102,22 +110,23 @@ The interface is intentionally lightweight and built directly with Android nativ
 | Platform | Android |
 | Language | Kotlin |
 | Compiler | Kotlin K2 |
-| Build | Gradle |
-| AGP | Android Gradle Plugin |
+| Build System | Gradle |
+| Build Plugin | Android Gradle Plugin |
 | Compile SDK | API 36 |
+| Target SDK | API 36 |
 | Minimum SDK | API 23 |
 
 ### Build
 
 Clone the repository and run:
 
-`git clone git@github.com:ToolGits/XeZenOn.git`
+```bash
+git clone git@github.com:ToolGits/XeZenOn.git
+cd XeZenOn
+./gradlew assembleDebug
+```
 
-`cd XeZenOn`
-
-`./gradlew assembleDebug`
-
-APK output:
+The generated debug APK can be found at:
 
 `app/build/outputs/apk/debug/app-debug.apk`
 
@@ -125,7 +134,7 @@ APK output:
 
 **XeZenOn 1.1.1** is the current stable release.
 
-The core system has been tested on real Android hardware, including:
+The core system and Android application have been tested on real Android hardware, including:
 
 - ✅ Application startup
 - ✅ Brain processing
@@ -146,15 +155,17 @@ The core system has been tested on real Android hardware, including:
 
 ## 🛣️ Future
 
-- 🎨 Further UI improvements
-- 🧠 More advanced reasoning
-- 📚 Expanded knowledge
-- 🌍 More languages
-- 🎯 More intents
-- ⚙️ Improved Android integration
-- 🧠 Better conversational context
-- 💾 More persistent memory
-- 🔎 Improved knowledge retrieval
+| Area | Planned Improvements |
+|---|---|
+| 🎨 Interface | Further UI improvements |
+| 🧠 Intelligence | More advanced reasoning |
+| 📚 Knowledge | Expanded knowledge and retrieval |
+| 🌍 Languages | Additional language support |
+| 🎯 Intents | More intent types |
+| ⚙️ Android | Improved Android integration |
+| 💬 Conversation | Better conversational context |
+| 💾 Memory | More persistent memory |
+| 🔎 Knowledge | Improved knowledge retrieval |
 
 ## 🏢 ToolGits
 
@@ -162,6 +173,8 @@ XeZenOn is maintained by **ToolGits**.
 
 - Organization: https://github.com/ToolGits
 - Creator: https://github.com/enzobobdevvideos04-ctrl
+
+XeZenOn is part of the ToolGits ecosystem alongside other projects developed by the organization.
 
 ## 📜 License
 
